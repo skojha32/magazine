@@ -7,6 +7,33 @@
 
 </head>
 <body>
+  <style>
+    body{
+      min-height:100%;
+  background:linear-gradient(0deg, rgba(104, 139, 254, 0.75), rgba(104, 139, 254, 0.75)), url('./img/bg-img/bck1.png');
+  background-size:cover;
+    }
+    .form-text{
+      padding: 10px 10px;
+      margin-left:7%;
+      margin-bottom: 2%;
+      width:100%;
+    }
+    .form-text .link1{
+      width:50%;
+      color: grey;
+      text-decoration: none;
+      float: left;
+      margin-bottom: 5%;
+    }
+    .form-text .link2{
+      width:50%;
+      color: grey;
+      text-decoration: none;
+      float: right;
+      margin-bottom: 5%;
+    }
+  </style>
 <!-- partial:index.partial.html -->
 <div class="login">
   <div class="form">
@@ -25,6 +52,11 @@
         <use href="#svg-check" />
       </svg>
     </div>
+    <div class="form-text">
+      <a class="link1" href="#forgetlink">Forgot Password?</a>
+      <a class="link2" href="#forgetlink">Signup</a>
+    </div>
+    
     <button type="submit" class="button">
       <div class="arrow-wrapper">
         <span class="arrow"></span>

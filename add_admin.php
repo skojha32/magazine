@@ -1,3 +1,4 @@
+<?php require "config.php"; ?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -19,28 +20,22 @@
       margin-bottom: 2%;
       width:100%;
     }
-    .form-text .link1{
+    .form-text a{
       width:50%;
       color: grey;
       text-decoration: none;
       float: left;
       margin-bottom: 5%;
     }
-    .form-text .link2{
-      width:50%;
-      color: grey;
-      text-decoration: none;
-      float: right;
-      margin-bottom: 5%;
-    }
   </style>
 <!-- partial:index.partial.html -->
+<form class="modal-content" method="post" action="add_admin.php">
 <div class="login">
   <div class="form">
     <h2>Login</h2>
     <div class="form-field">
       <label for="login-mail"><i class="fa fa-user"></i></label>
-      <input id="login-mail" type="text" name="mail" placeholder="E-Mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+      <input id="login-mail" type="text" name="uname" placeholder="Username" required>
       <svg>
         <use href="#svg-check" />
       </svg>
@@ -52,16 +47,13 @@
         <use href="#svg-check" />
       </svg>
     </div>
-    <div class="form-text">
-      <a class="link1" href="#forgetlink">Forgot Password?</a>
-      <a class="link2" href="#forgetlink">Signup</a>
-    </div>
     
-    <button type="submit" class="button">
+    
+    <button type="submit" class="button" name="sbmt">
       <div class="arrow-wrapper">
         <span class="arrow"></span>
       </div>
-      <p class="button-text">SIGN IN</p>
+      <p class="button-text">Add admin</p>
     </button>
   </div>
   <div class="finished">
@@ -70,8 +62,36 @@
     </svg>
   </div>
 </div>
+</form>
 
-
+<?php
+    if(isset($_POST['sbmt']))
+    {
+        $uname = $_POST['uname'];
+        $paswd = $_POST['password'];
+        
+        if($uname=="" || $paswd=="")
+		{
+			echo "<script type='text/javascript'>alert('Enter the username and password')</script>";
+			echo "<script type='text/javascript'>window.location.assign('add_admin.php')</script>";
+        }
+        else
+        {
+            $hash = password_hash($paswd, PASSWORD_DEFAULT);
+            $query = mysqli_query($con,"Insert into login(username,password) values('$uname','$hash')");
+            if($query)
+            {
+                echo "<script type='text/javascript'>alert('Admin Added Successfully')</script>";
+                echo "<script type='text/javascript'>window.location.assign('add_admin.php')</script>";
+            }
+            else
+            {
+                echo "<script type='text/javascript'>alert('Unable to Add admin. Please Try Again')</script>";
+                echo "<script type='text/javascript'>window.location.assign('add_admin.php')</script>";
+            }
+        }
+    }
+?>
 <!-- //--- ## SVG SYMBOLS ############# -->
 <svg style="display:none;">
   <symbol id="svg-check" viewBox="0 0 130.2 130.2">

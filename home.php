@@ -100,6 +100,7 @@
                                     <li><a href="portfolio.html">Settings</a>
                                         <ul class="dropdown">
                                             <li><a href="index.html">Backup</a></li>
+											<li><a href="add_admin.php">Add Admin</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -167,7 +168,7 @@
                 <div class="new1">
 
 
-                      <form class="form-group-lg" method="POST" action="home.php">
+                      <form class="form-group-lg" method="POST" action=<?php echo $_SERVER['PHP_SELF']; ?>>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="entrydate">Entry Date:</label>
@@ -247,7 +248,7 @@
                             <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="caddress">Permanent Address:</label>
+                            <label for="caddress">Address:</label>
                             <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St">
                           </div>
                           <div class="form-group col-md-6">
@@ -334,52 +335,108 @@
 
 
 <?php
+
+    function test_input($data){
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
+	}
     if(isset($_POST['sbmt']))
     {
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $mname = $_POST['mname'];
-        $entrydate = $_POST['entrydate'];
-        $conginitial = $_POST['conginitial'];
-        $designation = $_POST['designation'];
-        $hname = $_POST['hname'];
-        $gender = $_POST['gender'];
-        $oname = $_POST['oname'];
-        $congname = $_POST['congname'];
-        $cmobile =  $_POST['cmobile'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $nationality = $_POST['nationality'];
-        $cstate  = $_POST['cstate'];
-        $ccity = $_POST['ccity'];
-        $caddress = $_POST['caddress'];
-        $cpin = $_POST['cpin'];
-        $type = $_POST['type'];
-        $comment = $_POST['comment'];
-        $startdate = $_POST['startdate'];
-        $enddate = $_POST['enddate'];
-        $paymethod = $_POST['paymethod'];
-        $renew = $_POST['renew'];
-        $comment1 = $_POST['comment1'];
-        $renew_date = $_POST['renew_date'];
-        $cancel = $_POST['cancel'];
-        $cdistrict = $_POST['cdistrict'];
+        $fname = test_input($_POST['fname']);
+        $lname = test_input($_POST['lname']);
+        $mname = test_input($_POST['mname']);
+        $entrydate = test_input($_POST['entrydate']);
+        $conginitial = test_input($_POST['conginitial']);
+        $designation = test_input($_POST['designation']);
+        $hname = test_input($_POST['hname']);
+        $gender = test_input($_POST['gender']);
+        $oname = test_input($_POST['oname']);
+        $congname = test_input($_POST['congname']);
+        $cmobile =  test_input($_POST['cmobile']);
+        $email = test_input($_POST['email']);
+		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $phone = test_input($_POST['phone']);
+        $nationality = test_input($_POST['nationality']);
+        $cstate  = test_input($_POST['cstate']);
+        $ccity = test_input($_POST['ccity']);
+        $caddress = test_input($_POST['caddress']);
+        $cpin = test_input($_POST['cpin']);
+        $type = test_input($_POST['type']);
+        $comment = test_input($_POST['comment']);
+        $startdate = test_input($_POST['startdate']);
+        $enddate = test_input($_POST['enddate']);
+        $paymethod = test_input($_POST['paymethod']);
+        $renew = test_input($_POST['renew']);
+        $comment1 = test_input($_POST['comment1']);
+        $renew_date = test_input($_POST['renew_date']);
+        $cancel = test_input($_POST['cancel']);
+        $cdistrict = test_input($_POST['cdistrict']);
         //$uid = $_POST['uid'];
         $uid = 0;
 
         if ($comment == ""){
-          $comment = 'null';
+          $comment = "NULL";
         } 
         if ($comment1 == ""){
-          $comment1 = 'null';
+          $comment1 = "NULL";
         } 
         if ($renew_date == ""){
-          $renew_date = 'null';
+          $renew_date = "NULL";
         } 
        if($fname =="" ||  $entrydate=="" ||  $gender =="" || $cmobile=="" || $email=="" || $nationality == "" || $cstate == "" || $cdistrict == "" || $caddress == "" || $cpin == "" || $type == "" || $paymethod == "" || $startdate == "" || $enddate == ""   ){
-      echo "<script type='text/javascript'>alert('Enter All the details Carefully')</script>";
-      echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+           echo "<script type='text/javascript'>alert('Enter All the details Carefully')</script>";
+           echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
         }
+	     // Validate e-mail
+        elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+             echo "<script type='text/javascript'>alert('Invalid Email')</script>";
+             echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+	    }
+         // Validate Name and Address
+         elseif(is_numeric($fname) || is_numeric($mname) || is_numeric($lname) || is_numeric($conginitial) || is_numeric($hname) || is_numeric($oname) || is_numeric($congname) || is_numeric($nationality) || is_numeric($cstate) || is_numeric($ccity) || is_numeric($caddress) || is_numeric($cdistrict))
+         {
+			 echo "<script type='text/javascript'>alert('Invalid Name or Address')</script>";
+             echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+			 
+		 }
+		 //Validate Pin
+         elseif(!is_numeric($cpin) || strlen($cpin) <> 6) 
+		 {
+             echo "<script type='text/javascript'>alert('Invalid PinCode')</script>";
+             echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+			
+		 }
+         elseif($enddate < $startdate)
+         {
+			 echo "<script type='text/javascript'>alert('Invalid Subscription period')</script>";
+             echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+		 }	
+		 
+		 //Validate Phone
+         elseif(!is_numeric($cmobile) || strlen($cmobile) <> 10)
+         {
+             echo "<script type='text/javascript'>alert('Invalid Mobile Number')</script>";
+             echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+		
+		 }
+		 elseif($phone != "" && is_numeric($phone))
+		 {
+			 if(strlen($phone) >10)
+            {
+				echo "<script type='text/javascript'>alert('Phone Number must be only 10 digits')</script>";
+             echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+			}
+		 }
+         elseif($phone != "" && !is_numeric($phone))
+		 {
+		     echo "<script type='text/javascript'>alert('Phone Number must be numeric')</script>";
+             echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+			
+		 }
+		 		 
+		       				
         else
         {   
             if ($uid == 0){        

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2020 at 05:45 AM
+-- Generation Time: Nov 19, 2020 at 10:18 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,15 +49,24 @@ CREATE TABLE `subscription` (
   `subid` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
-  `category` varchar(15) NOT NULL,
   `paymethod` varchar(15) NOT NULL,
   `renew` varchar(3) NOT NULL,
   `startdate` date NOT NULL,
   `enddate` date NOT NULL,
   `renewdate` date DEFAULT NULL,
   `cancel` varchar(3) NOT NULL,
-  `comment` varchar(100) DEFAULT NULL
+  `comment` varchar(100) DEFAULT NULL,
+  `comment1` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subscription`
+--
+
+INSERT INTO `subscription` (`subid`, `uid`, `type`, `paymethod`, `renew`, `startdate`, `enddate`, `renewdate`, `cancel`, `comment`, `comment1`) VALUES
+(1, 16, 'paid', 'cash', 'no', '0000-00-00', '0000-00-00', NULL, 'no', 'comment', NULL),
+(2, 20, 'Paid', 'Cash', 'No', '2020-11-01', '2022-12-31', '0000-00-00', 'No', 'dsf', 'f'),
+(3, 22, 'Paid', 'Cash', 'No', '2020-12-29', '2022-12-25', '0000-00-00', 'No', 'sd', 'null');
 
 -- --------------------------------------------------------
 
@@ -85,20 +94,21 @@ CREATE TABLE `userdetail` (
   `ccity` varchar(40) DEFAULT NULL,
   `caddress` varchar(200) NOT NULL,
   `cpin` int(6) NOT NULL,
-  `pstate` varchar(20) NOT NULL,
-  `pdistrict` varchar(40) NOT NULL,
-  `pcity` varchar(40) DEFAULT NULL,
-  `paddress` varchar(200) NOT NULL,
-  `ppin` int(6) NOT NULL,
-  `dstate` varchar(20) NOT NULL,
-  `ddistrict` varchar(40) NOT NULL,
-  `dcity` varchar(40) DEFAULT NULL,
-  `daddress` varchar(200) NOT NULL,
-  `dpin` int(6) NOT NULL,
-  `pmobile` varchar(10) NOT NULL,
-  `dmobile` varchar(10) NOT NULL,
   `entrydate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userdetail`
+--
+
+INSERT INTO `userdetail` (`uid`, `fname`, `mname`, `lname`, `conginitial`, `designation`, `hname`, `gender`, `oname`, `congname`, `cmobile`, `email`, `aphone`, `nationality`, `cstate`, `cdistrict`, `ccity`, `caddress`, `cpin`, `entrydate`) VALUES
+(16, 'newuser', 'jshd', 'hdashd', '', 'Mr', '32', 'Male', 'dsf', 'fsdf', '9997255049', 'hahahah@gmail.com', 5465465, 'indian', 'uttar pradesh', 'dfsdf', 'bareilly', 'dasdsadsds', 243122, '2020-11-20'),
+(17, 'sdfsdf', 'sdasa', 'ssfdfs', '', 'Sr', 'dashgdaj', 'Male', 'sdajhd', 'hsdsjhd', '9997255049', 'newuser@gmail.com', 9997552, 'indian', 'karanataka', 'bangalore', 'bangalore', 'asdfsdfsfd', 243122, '2020-11-30'),
+(18, 'sdfsdf', 'sdasa', 'ssfdfs', '', 'Sr', 'dashgdaj', 'Male', 'sdajhd', 'hsdsjhd', '9997255049', 'newuser@gmail.com', 9997552, 'indian', 'karanataka', 'bangalore', 'bangalore', 'asdfsdfsfd', 243122, '2020-11-30'),
+(19, 'sdfsdf', 'sdasa', 'ssfdfs', 'bsdahgd', 'Sr', 'dashgdaj', 'Male', 'sdajhd', 'hsdsjhd', '9997255049', 'newuser@gmail.com', 9997552, 'indian', 'karanataka', 'bangalore', 'bangalore', 'asdfsdfsfd', 243122, '2020-11-30'),
+(20, 'Shobhit', 'Kumar', 'Gangwar', 'nsdamnsdb', 'Fr', 'X-1 Shastri Nagar', 'Male', 'damsn', 'ads', '9997255049', 'shobhitgangwar@yahoo.com', 5465465, 'indian', 'Karnataka', 'bareilly', 'Bareilly', 'sdffsdf', 243122, '2020-11-20'),
+(21, 'Shobhit', 'Kumar', 'Gangwar', 'nsdamnsdb', 'Fr', 'X-1 Shastri Nagar', 'Male', 'damsn', 'ads', '9997255049', 'shobhitgangwar@yahoo.com', 5465465, 'indian', 'Karnataka', 'bareilly', 'Bareilly', 'sdffsdf', 243122, '2020-11-20'),
+(22, 'new ', 'user', 'test', 'yes', 'Mr', '34', 'Male', 'sad', 'gdfg', '9997255049', 'shobhitgangwar1@yahoo.com', 45565654, 'indian', 'Karnataka', 'bangalore', 'Bareilly', 'dsfsdfsd', 243122, '2020-11-19');
 
 --
 -- Indexes for dumped tables
@@ -131,13 +141,13 @@ ALTER TABLE `userdetail`
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `subid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `subid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `userdetail`
 --
 ALTER TABLE `userdetail`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables

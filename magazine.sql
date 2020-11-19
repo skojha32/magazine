@@ -76,7 +76,7 @@ CREATE TABLE `userdetail` (
   `gender` varchar(10) NOT NULL,
   `oname` varchar(50) DEFAULT NULL,
   `congname` varchar(50) DEFAULT NULL,
-  `cmobile` int(10) NOT NULL,
+  `cmobile` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL,
   `aphone` int(10) DEFAULT NULL,
   `nationality` varchar(20) NOT NULL,
@@ -95,8 +95,8 @@ CREATE TABLE `userdetail` (
   `dcity` varchar(40) DEFAULT NULL,
   `daddress` varchar(200) NOT NULL,
   `dpin` int(6) NOT NULL,
-  `pmobile` int(10) NOT NULL,
-  `dmobile` int(10) NOT NULL,
+  `pmobile` varchar(10) NOT NULL,
+  `dmobile` varchar(10) NOT NULL,
   `entrydate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

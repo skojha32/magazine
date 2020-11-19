@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2020 at 10:18 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Nov 19, 2020 at 05:10 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `gateway` (
   `username` varchar(30) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -37,7 +37,8 @@ CREATE TABLE `gateway` (
 --
 
 INSERT INTO `gateway` (`username`, `password`) VALUES
-('admin', '$2y$10$SW2VYi8Q74ZaRcpUJfl0keQF4GHsclHKUetiGSChAMajas.OY1uCK');
+('shivam', '$2y$10$6Z4dYVbm'),
+('shubham', '$2y$10$Zii3631w');
 
 -- --------------------------------------------------------
 
@@ -64,9 +65,11 @@ CREATE TABLE `subscription` (
 --
 
 INSERT INTO `subscription` (`subid`, `uid`, `type`, `paymethod`, `renew`, `startdate`, `enddate`, `renewdate`, `cancel`, `comment`, `comment1`) VALUES
-(1, 16, 'paid', 'cash', 'no', '0000-00-00', '0000-00-00', NULL, 'no', 'comment', NULL),
-(2, 20, 'Paid', 'Cash', 'No', '2020-11-01', '2022-12-31', '0000-00-00', 'No', 'dsf', 'f'),
-(3, 22, 'Paid', 'Cash', 'No', '2020-12-29', '2022-12-25', '0000-00-00', 'No', 'sd', 'null');
+(2, 1, 'Paid', 'Card', 'No', '2020-11-19', '2021-11-19', NULL, 'No', NULL, NULL),
+(3, 2, 'Paid', 'Card', 'No', '2020-11-19', '2021-05-19', NULL, 'No', NULL, NULL),
+(4, 3, 'Complementary', 'Free', 'No', '2020-01-01', '2020-11-01', NULL, 'No', NULL, NULL),
+(5, 4, 'Paid', 'Card', 'No', '2020-01-01', '2020-06-01', NULL, 'No', NULL, NULL),
+(6, 6, 'Paid', 'Cash', 'No', '2020-11-19', '2021-04-19', '0000-00-00', 'No', 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -87,13 +90,13 @@ CREATE TABLE `userdetail` (
   `congname` varchar(50) DEFAULT NULL,
   `cmobile` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `aphone` int(10) DEFAULT NULL,
+  `aphone` varchar(10) DEFAULT NULL,
   `nationality` varchar(20) NOT NULL,
   `cstate` varchar(20) NOT NULL,
   `cdistrict` varchar(40) NOT NULL,
   `ccity` varchar(40) DEFAULT NULL,
   `caddress` varchar(200) NOT NULL,
-  `cpin` int(6) NOT NULL,
+  `cpin` varchar(6) NOT NULL,
   `entrydate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -102,13 +105,11 @@ CREATE TABLE `userdetail` (
 --
 
 INSERT INTO `userdetail` (`uid`, `fname`, `mname`, `lname`, `conginitial`, `designation`, `hname`, `gender`, `oname`, `congname`, `cmobile`, `email`, `aphone`, `nationality`, `cstate`, `cdistrict`, `ccity`, `caddress`, `cpin`, `entrydate`) VALUES
-(16, 'newuser', 'jshd', 'hdashd', '', 'Mr', '32', 'Male', 'dsf', 'fsdf', '9997255049', 'hahahah@gmail.com', 5465465, 'indian', 'uttar pradesh', 'dfsdf', 'bareilly', 'dasdsadsds', 243122, '2020-11-20'),
-(17, 'sdfsdf', 'sdasa', 'ssfdfs', '', 'Sr', 'dashgdaj', 'Male', 'sdajhd', 'hsdsjhd', '9997255049', 'newuser@gmail.com', 9997552, 'indian', 'karanataka', 'bangalore', 'bangalore', 'asdfsdfsfd', 243122, '2020-11-30'),
-(18, 'sdfsdf', 'sdasa', 'ssfdfs', '', 'Sr', 'dashgdaj', 'Male', 'sdajhd', 'hsdsjhd', '9997255049', 'newuser@gmail.com', 9997552, 'indian', 'karanataka', 'bangalore', 'bangalore', 'asdfsdfsfd', 243122, '2020-11-30'),
-(19, 'sdfsdf', 'sdasa', 'ssfdfs', 'bsdahgd', 'Sr', 'dashgdaj', 'Male', 'sdajhd', 'hsdsjhd', '9997255049', 'newuser@gmail.com', 9997552, 'indian', 'karanataka', 'bangalore', 'bangalore', 'asdfsdfsfd', 243122, '2020-11-30'),
-(20, 'Shobhit', 'Kumar', 'Gangwar', 'nsdamnsdb', 'Fr', 'X-1 Shastri Nagar', 'Male', 'damsn', 'ads', '9997255049', 'shobhitgangwar@yahoo.com', 5465465, 'indian', 'Karnataka', 'bareilly', 'Bareilly', 'sdffsdf', 243122, '2020-11-20'),
-(21, 'Shobhit', 'Kumar', 'Gangwar', 'nsdamnsdb', 'Fr', 'X-1 Shastri Nagar', 'Male', 'damsn', 'ads', '9997255049', 'shobhitgangwar@yahoo.com', 5465465, 'indian', 'Karnataka', 'bareilly', 'Bareilly', 'sdffsdf', 243122, '2020-11-20'),
-(22, 'new ', 'user', 'test', 'yes', 'Mr', '34', 'Male', 'sad', 'gdfg', '9997255049', 'shobhitgangwar1@yahoo.com', 45565654, 'indian', 'Karnataka', 'bangalore', 'Bareilly', 'dsfsdfsd', 243122, '2020-11-19');
+(1, 'Shivaji', 'Maha', 'Raja', NULL, 'Fr', NULL, 'Male', NULL, NULL, '7412589634', 'you@example.com', NULL, 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', 'Kristu Jayanti College', '560077', '2020-11-19'),
+(2, 'George', NULL, 'John', NULL, 'Mr', NULL, 'Male', NULL, NULL, '8523697412', 'john@example.com', NULL, 'Indian', 'Karnataka', 'Bangalore Rural', NULL, 'Pattrick Mansion', '560089', '2020-11-19'),
+(3, 'Yash', 'kumar', 'jha', NULL, 'Mr', NULL, 'Male', NULL, NULL, '8745129634', 'jahaaa@example.com', NULL, 'Indian', 'Karnataka', 'Bangalore Urban', NULL, 'House Dept', '560011', '2020-11-19'),
+(4, 'Mohit', 'Prakash', 'Yadav', NULL, 'Mr', NULL, 'Male', NULL, NULL, '8794561235', 'yadav@gmail.com', NULL, 'Indian', 'Karnataka', 'Bangalore Urban', NULL, 'Prestige Building,Horamavu', '560023', '2020-11-19'),
+(6, 'Shashi', 'Kant', 'Ojha', '', 'Mr', '', 'Male', '', '', '9513578524', 'shashi@gmail.com', '7639632415', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '202 T,Main Road', '560077', '2020-11-19');
 
 --
 -- Indexes for dumped tables
@@ -131,7 +132,8 @@ ALTER TABLE `subscription`
 -- Indexes for table `userdetail`
 --
 ALTER TABLE `userdetail`
-  ADD PRIMARY KEY (`uid`);
+  ADD PRIMARY KEY (`uid`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -141,13 +143,13 @@ ALTER TABLE `userdetail`
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `subid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `subid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `userdetail`
 --
 ALTER TABLE `userdetail`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

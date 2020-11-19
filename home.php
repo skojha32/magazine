@@ -1,3 +1,4 @@
+<?php require "config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -166,31 +167,31 @@
                 <div class="new1">
 
 
-                      <form class="form-group-lg">
+                      <form class="form-group-lg" method="POST" action="home.php">
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="entrydate">Entry Date:</label>
-                            <input type="date" class="form-control" id="entrydate">
+                            <input type="date" class="form-control" id="entrydate" name="entrydate">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="fname">First Name:</label>
-                            <input type="text" class="form-control" id="fname" placeholder="First Name">
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="mname">Middle Name:</label>
-                            <input type="text" class="form-control" id="mname" placeholder="Middle Name">
+                            <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="lname">Last Name:</label>
-                            <input type="text" class="form-control" id="lname" placeholder="Last Name">
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="coginitial">Initial Of Congregation:</label>
-                            <input type="text" class="form-control" id="coginitial" placeholder="">
+                            <label for="conginitial">Initial Of Congregation:</label>
+                            <input type="text" class="form-control" id="conginitial" name="conginitial" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="designation">Designation</label>
-                            <select id="designation" class="form-control">
+                            <select id="designation" name="designation" class="form-control">
                               <option selected>Fr</option>
                               <option>Sr</option>
                               <option>Bro</option>
@@ -200,55 +201,60 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="hname">House Name:</label>
-                            <input type="text" class="form-control" id="hname" placeholder="">
+                            <input type="text" class="form-control" id="hname" name="hname" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="gender">Gender</label>
-                            <select id="gender" class="form-control">
+                            <select id="gender" name="gender" class="form-control">
                               <option selected>Male</option>
                               <option>Female</option>
                             </select>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="oname">Official Name:</label>
-                            <input type="text" class="form-control" id="oname" placeholder="">
+                            <input type="text" class="form-control" id="oname" name="oname" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="congname">Congregation/Diocese Name:</label>
-                            <input type="text" class="form-control" id="congname" placeholder="">
+                            <input type="text" class="form-control" id="congname"  name="congname" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="mobile">Mobile:</label>
-                            <input type="tel" class="form-control" id="mobile" placeholder="">
+                            <label for="cmobile">Mobile:</label>
+                            <input type="tel" class="form-control" id="cmobile" name="cmobile" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="phone">Phone:</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="">
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="nationality">Nationality:</label>
-                            <input type="text" class="form-control" id="nationality" placeholder="">
+                            <input type="text" class="form-control" id="nationality" name="nationality" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cstate">State:</label>
-                            <input type="text" class="form-control" id="cstate" placeholder="">
+                            <input type="text" class="form-control" id="cstate" name="cstate" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="ccity">City:</label>
-                            <input type="text" class="form-control" id="ccity" placeholder="">
+                            <input type="text" class="form-control" id="ccity" name="ccity" placeholder="">
+                          </div>
+                           <div class="form-group col-md-6">
+                            <label for="cdistrict">District:</label>
+                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="caddress">Permanent Address:</label>
-                            <input type="text" class="form-control" id="caddress" placeholder="1234 Main St">
+                            <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St">
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="pin">PIN:</label>
-                            <input type="pin" class="form-control" id="pin" placeholder="">
+                            <label for="cpin">PIN:</label>
+                            <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="">
                           </div>
+                          <input type="hidden" name="uid" value="0">
                         <style>
                             .chk1 label{
                                     margin-left: 15px;
@@ -259,30 +265,30 @@
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
     <div class="form-group col-md-6">
-        <label for="inputState">
+        <label for="type">
             Subscription Type:</label>
-        <select id="inputState" class="form-control">
+        <select id="type" name="type" class="form-control">
           <option selected>Paid</option>
           <option>Complementary</option>
           <option>Others</option>
         </select>
       </div>
   <div class="form-group col-md-6">
-  <label for="inputPassword4">Other Details:</label>
-  <input type="text" class="form-control" id="inputPassword4" placeholder="">
+  <label for="comment">Other Details:</label>
+  <input type="text" class="form-control" id="comment" name="comment" placeholder="">
   </div>
   <div class="form-group col-md-6">
-  <label for="inputPassword4">Period From:</label>
-  <input type="date" class="form-control" id="inputPassword4" placeholder="">
+  <label for="startdate">Period From:</label>
+  <input type="date" class="form-control" id="startdate" name="startdate" placeholder="">
   </div>
   <div class="form-group col-md-6">
-    <label for="inputPassword4">Period To:</label>
-    <input type="date" class="form-control" id="inputPassword4" placeholder="">
+    <label for="enddate">Period To:</label>
+    <input type="date" class="form-control" id="enddate" name="enddate" placeholder="">
     </div>
     <div class="form-group col-md-6">
-        <label for="inputState">
+        <label for="paymethod">
             Method Of Payment:</label>
-        <select id="inputState" class="form-control">
+        <select id="paymethod" name="paymethod" class="form-control">
           <option selected>Cash</option>
           <option>Cheque</option>
           <option>Bank</option>
@@ -290,27 +296,27 @@
         </select>
       </div>
       <div class="form-group col-md-6">
-        <label for="inputPassword4">Other Details:</label>
-        <input type="text" class="form-control" id="inputPassword4" placeholder="">
+        <label for="comment1">Other Details:</label>
+        <input type="text" class="form-control" id="comment1" name="comment1" placeholder="">
         </div>
 
         <div class="form-group col-md-6">
-            <label for="inputState">
+            <label for="renew">
                 Renew:</label>
-            <select id="inputState" class="form-control">
+            <select id="renew" name="renew" class="form-control">
               <option selected>No</option>
               <option>Yes</option>
             </select>
           </div>
   <div class="form-group col-md-6">
-  <label for="inputPassword4">Renew Period To:</label>
-  <input type="date" class="form-control" id="inputPassword4" placeholder="">
+  <label for="renew_date">Renew Period To:</label>
+  <input type="date" class="form-control" id="renew_date" name="renew_date" placeholder="">
   </div>
 
   <div class="form-group col-md-6">
-    <label for="inputState">
+    <label for="cancel">
         Cancel:</label>
-    <select id="inputState" class="form-control">
+    <select id="cancel" name="cancel" class="form-control">
       <option selected>No</option>
       <option>Yes</option>
     </select>
@@ -318,13 +324,87 @@
 
   </div>
 </div>
-                        <button type="submit" class="btn pixel-btn mt-15">Save</button>
+                        <button name="sbmt" type="submit" class="btn pixel-btn mt-15">Save</button>
                         <button type="submit" class="btn pixel-btn mt-15">Cancel</button>
                       </form>
                 </div>
                 
             </div>
 
+
+<?php
+    if(isset($_POST['sbmt']))
+    {
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $mname = $_POST['mname'];
+        $entrydate = $_POST['entrydate'];
+        $conginitial = $_POST['conginitial'];
+        $designation = $_POST['designation'];
+        $hname = $_POST['hname'];
+        $gender = $_POST['gender'];
+        $oname = $_POST['oname'];
+        $congname = $_POST['congname'];
+        $cmobile =  $_POST['cmobile'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $nationality = $_POST['nationality'];
+        $cstate  = $_POST['cstate'];
+        $ccity = $_POST['ccity'];
+        $caddress = $_POST['caddress'];
+        $cpin = $_POST['cpin'];
+        $type = $_POST['type'];
+        $comment = $_POST['comment'];
+        $startdate = $_POST['startdate'];
+        $enddate = $_POST['enddate'];
+        $paymethod = $_POST['paymethod'];
+        $renew = $_POST['renew'];
+        $comment1 = $_POST['comment1'];
+        $renew_date = $_POST['renew_date'];
+        $cancel = $_POST['cancel'];
+        $cdistrict = $_POST['cdistrict'];
+        $uid = $_POST['uid'];
+        $uid = 0;
+
+        if ($comment == ""){
+          $comment = 'null';
+        } 
+        if ($comment1 == ""){
+          $comment1 = 'null';
+        } 
+        if ($renew_date == ""){
+          $renew_date = 'null';
+        } 
+       if($fname =="" ||  $entrydate=="" ||  $gender =="" || $cmobile=="" || $email=="" || $nationality == "" || $cstate == "" || $cdistrict == "" || $caddress == "" || $cpin == "" || $type == "" || $paymethod == "" || $startdate == "" || $enddate == ""   ){
+      echo "<script type='text/javascript'>alert('Enter All the details Carefully')</script>";
+      echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+        }
+        else
+        {   
+            if ($uid == 0){        
+            
+            $query =  mysqli_query($con,"INSERT INTO `userdetail`( `fname`, `mname`, `lname`, `conginitial`, `designation`, `hname`, `gender`, `oname`, `congname`, `cmobile`, `email`, `aphone`, `nationality`, `cstate`, `cdistrict`, `ccity`, `caddress`, `cpin`, `entrydate`) VALUES ('$fname','$mname','$lname','$conginitial','$designation','$hname','$gender','$oname','$congname','$cmobile','$email','$phone','$nationality','$cstate','$cdistrict','$ccity','$caddress','$cpin','$entrydate')");
+                          
+              
+            if($query)
+            {
+                echo "<script type='text/javascript'>alert('Success')</script>";
+                #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+            }
+            else
+            {
+                echo "<script type='text/javascript'>alert('New Record Failed')</script>";
+                #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+            }
+
+            $query = mysqli_query($con,"SELECT uid from `userdetail` where email='$email'");
+            $uid_r = mysqli_fetch_assoc($query);
+            $uid = $uid_r['uid'];
+            $query = mysqli_query($con,"INSERT INTO `subscription`( `uid`, `type`, `paymethod`, `renew`, `startdate`, `enddate`, `renewdate`, `cancel`, `comment`,`comment1`) VALUES ($uid,'$type','$paymethod','$renew','$startdate','$enddate','$renew_date','$cancel','$comment','$comment1')");
+        }
+      }  
+    }
+?>
             <!-- Single gallery Item -->
             <div id="myDIV2" class="view" data-wow-delay="0.4s">
 

@@ -242,7 +242,7 @@
                             <label for="ccity">City:</label>
                             <input type="text" class="form-control" id="ccity" name="ccity" placeholder="">
                           </div>
-                           <div class="form-group col-md-6">
+                          <div class="form-group col-md-6">
                             <label for="cdistrict">District:</label>
                             <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="">
                           </div>
@@ -254,7 +254,8 @@
                             <label for="cpin">PIN:</label>
                             <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="">
                           </div>
-                          <input type="hidden" name="uid" value="0">
+                          <!--<input type="hidden" name="uid" value="0">-->
+						  </div>
                         <style>
                             .chk1 label{
                                     margin-left: 15px;
@@ -363,7 +364,7 @@
         $renew_date = $_POST['renew_date'];
         $cancel = $_POST['cancel'];
         $cdistrict = $_POST['cdistrict'];
-        $uid = $_POST['uid'];
+        //$uid = $_POST['uid'];
         $uid = 0;
 
         if ($comment == ""){
@@ -388,7 +389,18 @@
               
             if($query)
             {
-                echo "<script type='text/javascript'>alert('Success')</script>";
+			   $query = mysqli_query($con,"SELECT uid from `userdetail` where email='$email'");
+               $uid_r = mysqli_fetch_assoc($query);
+               $uid = $uid_r['uid'];
+               $query = mysqli_query($con,"INSERT INTO `subscription`( `uid`, `type`, `paymethod`, `renew`, `startdate`, `enddate`, `renewdate`, `cancel`, `comment`,`comment1`) VALUES ($uid,'$type','$paymethod','$renew','$startdate','$enddate','$renew_date','$cancel','$comment','$comment1')");
+               if($query){
+				   echo "<script type='text/javascript'>alert('Success')</script>";
+			   }
+			   else{
+				   
+				   echo "<script type='text/javascript'>alert('New Record Failed')</script>";
+			   }
+				
                 #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
             }
             else
@@ -396,11 +408,6 @@
                 echo "<script type='text/javascript'>alert('New Record Failed')</script>";
                 #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
             }
-
-            $query = mysqli_query($con,"SELECT uid from `userdetail` where email='$email'");
-            $uid_r = mysqli_fetch_assoc($query);
-            $uid = $uid_r['uid'];
-            $query = mysqli_query($con,"INSERT INTO `subscription`( `uid`, `type`, `paymethod`, `renew`, `startdate`, `enddate`, `renewdate`, `cancel`, `comment`,`comment1`) VALUES ($uid,'$type','$paymethod','$renew','$startdate','$enddate','$renew_date','$cancel','$comment','$comment1')");
         }
       }  
     }
@@ -408,40 +415,53 @@
             <!-- Single gallery Item -->
             <div id="myDIV2" class="view" data-wow-delay="0.4s">
 
-<table class="rwd-table" style="margin:auto;">
-  <tr>
-    <th>First Name</th>
-    <th>House Name</th>
-    <th>SubPeriodFromDate</th>
-    <th>SubPeriodToDate</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <tr>
-    <td data-th="First Name">FR</td>
-    <td data-th="House Name">ST.JOSEPH ACADEMY, ARAKULAM P.O</td>
-    <td data-th="SubPeriodFromDate">08/Nov/2020</td>
-    <td data-th="SubPeriodToDate">	08/Nov/2021</td>
-    <td data-th="Edit"><i class="fa fa-edit" style="font-size: 20px;color:orange"></td>
-    <td data-th="Delete"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></td>
-  </tr>
-  <tr>
-    <td data-th="First Name">FR</td>
-    <td data-th="House Name">ST.JOSEPH ACADEMY, ARAKULAM P.O</td>
-    <td data-th="SubPeriodFromDate">08/Nov/2020</td>
-    <td data-th="SubPeriodToDate">	08/Nov/2021</td>
-    <td data-th="Edit"><i class="fa fa-edit" style="font-size: 20px;color:orange"></td>
-    <td data-th="Delete"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></td>
-  </tr>
-  <tr>
-    <td data-th="First Name">FR</td>
-    <td data-th="House Name">ST.JOSEPH ACADEMY, ARAKULAM P.O</td>
-    <td data-th="SubPeriodFromDate">08/Nov/2020</td>
-    <td data-th="SubPeriodToDate">	08/Nov/2021</td>
-    <td data-th="Edit"><i class="fa fa-edit" style="font-size: 20px;color:orange"></td>
-    <td data-th="Delete"><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></td>
-  </tr>
-</table>
+<script>
+            $(document).ready(function(){
+                $("#active").click(function(){
+					var Id = this.id;
+                    $.ajax({
+                        url:'data.php',
+                        type:'post',
+						data: {
+							ids:Id
+						},
+						success:function(result){
+							$("#result").html(result);
+							}
+                    });
+                });
+				$("#all").click(function(){
+					var Id = this.id;
+                    $.ajax({
+                        url:'data.php',
+                        type:'post',
+						data: {
+							ids:Id
+						},
+						success:function(result){
+							$("#result").html(result);
+							}
+                    });
+                });
+				$("#inactive").click(function(){
+					var Id = this.id;
+                    $.ajax({
+                        url:'data.php',
+                        type:'post',
+						data: {
+							ids:Id
+						},
+						success:function(result){
+							$("#result").html(result);
+							}
+                    });
+                });
+            });
+            </script>
+			<input type="submit" class="btn pixel-btn mt-15" id="all" name="all" value="All" />
+			<input type="submit" class="btn pixel-btn mt-15" id="active" name="active" value="Active" />
+			<input type="submit" class="btn pixel-btn mt-15" id="inactive" name="inactive" value="Inactive" />
+			<span id="result"></span> 
             
             </div>
             <link rel="stylesheet" href="./tstyle.css">

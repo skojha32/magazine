@@ -77,7 +77,7 @@
         }
         else
         {
-			$queryhash = mysqli_query($con,"SELECT password FROM login WHERE username = '$uname'");
+			$queryhash = mysqli_query($con,"SELECT password FROM gateway WHERE username = '$uname'");
 			$hasharray = mysqli_fetch_assoc($queryhash);
 			$hash = $hasharray['password'];
 			

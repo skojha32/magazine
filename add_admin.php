@@ -78,7 +78,7 @@
         else
         {
             $hash = password_hash($paswd, PASSWORD_DEFAULT);
-            $query = mysqli_query($con,"Insert into login(username,password) values('$uname','$hash')");
+            $query = mysqli_query($con,"Insert into gateway(username,password) values('$uname','$hash')");
             if($query)
             {
                 echo "<script type='text/javascript'>alert('Admin Added Successfully')</script>";

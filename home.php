@@ -168,15 +168,15 @@
                 <div class="new1">
 
 
-                      <form class="form-group-lg" method="POST" action=<?php echo $_SERVER['PHP_SELF']; ?>>
+                      <form id="inputform" class="form-group-lg" method="POST" action=<?php echo $_SERVER['PHP_SELF']; ?>>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="entrydate">Entry Date:</label>
-                            <input type="date" class="form-control" id="entrydate" name="entrydate">
+                            <input type="date" class="form-control" id="entrydate" name="entrydate" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="fname">First Name:</label>
-                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="mname">Middle Name:</label>
@@ -192,7 +192,7 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="designation">Designation</label>
-                            <select id="designation" name="designation" class="form-control">
+                            <select id="designation" name="designation" class="form-control" required>
                               <option selected>Fr</option>
                               <option>Sr</option>
                               <option>Bro</option>
@@ -206,7 +206,7 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="gender">Gender</label>
-                            <select id="gender" name="gender" class="form-control">
+                            <select id="gender" name="gender" class="form-control" required>
                               <option selected>Male</option>
                               <option>Female</option>
                             </select>
@@ -221,11 +221,11 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cmobile">Mobile:</label>
-                            <input type="tel" class="form-control" id="cmobile" name="cmobile" placeholder="">
+                            <input type="tel" class="form-control" id="cmobile" name="cmobile" placeholder="" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="phone">Phone:</label>
@@ -233,11 +233,11 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="nationality">Nationality:</label>
-                            <input type="text" class="form-control" id="nationality" name="nationality" placeholder="">
+                            <input type="text" class="form-control" id="nationality" name="nationality" placeholder="" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cstate">State:</label>
-                            <input type="text" class="form-control" id="cstate" name="cstate" placeholder="">
+                            <input type="text" class="form-control" id="cstate" name="cstate" placeholder="" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="ccity">City:</label>
@@ -245,15 +245,15 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cdistrict">District:</label>
-                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="">
+                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="caddress">Address:</label>
-                            <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St">
+                            <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cpin">PIN:</label>
-                            <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="">
+                            <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="" required>
                           </div>
                           <!--<input type="hidden" name="uid" value="0">-->
 						  </div>
@@ -281,11 +281,11 @@
   </div>
   <div class="form-group col-md-6">
   <label for="startdate">Period From:</label>
-  <input type="date" class="form-control" id="startdate" name="startdate" placeholder="">
+  <input type="date" class="form-control" id="startdate" name="startdate" placeholder="" required>
   </div>
   <div class="form-group col-md-6">
     <label for="enddate">Period To:</label>
-    <input type="date" class="form-control" id="enddate" name="enddate" placeholder="">
+    <input type="date" class="form-control" id="enddate" name="enddate" placeholder="" required>
     </div>
     <div class="form-group col-md-6">
         <label for="paymethod">
@@ -327,12 +327,20 @@
   </div>
 </div>
                         <button name="sbmt" type="submit" class="btn pixel-btn mt-15">Save</button>
-                        <button type="submit" class="btn pixel-btn mt-15">Cancel</button>
+                        <button type="reset" class="btn pixel-btn mt-15" onclick="cancel()">Cancel</button>
                       </form>
                 </div>
                 
             </div>
-
+			
+			
+<script>
+function cancel() {
+  document.getElementById("inputform").reset();
+}
+</script>
+			
+			
 
 <?php
 
@@ -542,6 +550,9 @@
                   
                 }
                 </script>
+				
+				
+
         
 
 

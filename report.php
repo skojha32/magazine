@@ -99,7 +99,7 @@
                                     </li>
                                     <li><a href="#">Settings</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Backup</a></li>
+                                            <li><a href="#">Change Password</a></li>
 											<li><a href="add_admin.php">Add Admin</a></li>
                                         </ul>
                                     </li>

@@ -5,7 +5,6 @@ require "config.php";
 echo "<br><br><table class='rwd-table' style='margin:auto;'>";
 
 
-
 echo "<tr>
     <th>S.No</th>
     <th>Name</th>

@@ -1,4 +1,5 @@
 <?php require "config.php"; ?>
+<?php require "subs_count.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,7 +102,7 @@
                                     </li>
                                     <li><a href="#">Settings</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Backup</a></li>
+                                            <li><a href="#">Change Password</a></li>
 											<li><a href="add_admin.php">Add Admin</a></li>
                                         </ul>
                                     </li>
@@ -182,6 +183,8 @@
 		}
 		
 
+	}else{
+		$uid = 0;
 	}
 ?>
             <!-- Single gallery Item -->
@@ -215,8 +218,8 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="designation">Designation</label>
-                            <select id="designation" name="designation" class="form-control" required value=<?php if(isset($uid_data)){  echo "'".$uid_data[4]."'";}?>>
-                              <option disabled selected value> -- Select an option -- </option>
+                            <select id="designation" name="designation" class="form-control" required>
+							 <?php if(isset($uid_data)){  echo "<option>".$uid_data[4]."</option>";}else{ echo "<option disabled selected value> -- Select an option -- </option>";}?>
 							  <option>Fr</option>
                               <option>Sr</option>
                               <option>Mr</option>
@@ -230,8 +233,8 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="gender">Gender</label>
-                            <select id="gender" name="gender" class="form-control" required value=<?php if(isset($uid_data)){  echo "'".$uid_data[6]."'";}?>>
-                              <option disabled selected value> -- Select an option -- </option>
+                            <select id="gender" name="gender" class="form-control" required>
+                              <?php if(isset($uid_data)){  echo "<option>".$uid_data[6]."</option>";}else{ echo "<option disabled selected value> -- Select an option -- </option>";}?>
 							  <option>Male</option>
                               <option>Female</option>
                             </select>
@@ -266,11 +269,11 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="ccity">City:</label>
-                            <input type="text" class="form-control" id="ccity" name="ccity" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[14]."'";}?>>
+                            <input type="text" class="form-control" id="ccity" name="ccity" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[15]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cdistrict">District:</label>
-                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[15]."'";}?>>
+                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[14]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="caddress">Address:</label>
@@ -297,8 +300,8 @@
     <div class="form-group col-md-6">
         <label for="type">
             Subscription Type:</label>
-        <select id="type" name="type" class="form-control" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[20]."'" ; }?>>
-          <option disabled selected value> -- Select an option -- </option>
+       <select id="type" name="type" class="form-control" required>
+          <?php if(isset($uid_data)){  echo "<option>".$uid_data[20]."</option>";}else{ echo "<option disabled selected value> -- Select an option -- </option>";}?>
 		  <option>Paid</option>
           <option>Complementary</option>
           <option>Others</option>
@@ -319,8 +322,8 @@
     <div class="form-group col-md-6">
         <label for="paymethod">
             Method Of Payment:</label>
-        <select id="paymethod" name="paymethod" class="form-control" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[24]."'" ; }?>>
-          <option disabled selected value> -- Select an option -- </option>
+        <select id="paymethod" name="paymethod" class="form-control" required>
+          <?php if(isset($uid_data)){  echo "<option>".$uid_data[24]."</option>";}else{ echo "<option disabled selected value> -- Select an option -- </option>";}?>
 		  <option>Cash</option>
           <option>Cheque</option>
           <option>Bank</option>
@@ -549,6 +552,67 @@
                   
                 }
                 </script>
+				
+				
+<section class="pixel-cool-facts-area bg-gray section-padding-100-0">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- Single Cool Facts -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact mb-100">
+                        <div class="scf-icon">
+                            <img src="img/core-img/m1.png" alt="">
+                        </div>
+                        <div class="scf-text">
+                            <h2><span class="counter"><?php echo $all; ?></span></h2>
+                            <h6>Total Subscriber</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Cool Facts -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact mb-100">
+                        <div class="scf-icon">
+                            <img src="img/core-img/m2.png" alt="">
+                        </div>
+                        <div class="scf-text">
+                            <h2><span class="counter"><?php echo $active; ?></span></h2>
+                            <h6>Active Subscriber</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Cool Facts -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact mb-100">
+                        <div class="scf-icon">
+                            <img src="img/core-img/m3.png" alt="">
+                        </div>
+                        <div class="scf-text">
+                            <h2><span class="counter"><?php echo $inactive; ?></span></h2>
+                            <h6>Inactive Subscriber</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Cool Facts -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-cool-fact mb-100">
+                        <div class="scf-icon">
+                            <img src="img/core-img/m4.png" alt="">
+                        </div>
+                        <div class="scf-text">
+                            <h2><span class="counter"><?php echo $today; ?></span></h2>
+                            <h6>New Subscriber Added</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
         
 
 

@@ -19,7 +19,7 @@ if($_POST['ids'] == "active"){
 
 $count = 1;
      
-	 $query = mysqli_query($con, "SELECT userdetail.fname,userdetail.mname,userdetail.lname,userdetail.designation,userdetail.email,userdetail.cmobile,subscription.startdate,subscription.enddate FROM userdetail INNER JOIN subscription ON userdetail.uid = subscription.uid WHERE DATE_FORMAT(subscription.enddate, '%Y-%m-%d') >= CURDATE() ");
+	 $query = mysqli_query($con, "SELECT userdetail.fname,userdetail.mname,userdetail.lname,userdetail.designation,userdetail.email,userdetail.cmobile,subscription.startdate,subscription.enddate,userdetail.uid FROM userdetail INNER JOIN subscription ON userdetail.uid = subscription.uid WHERE DATE_FORMAT(subscription.enddate, '%Y-%m-%d') >= CURDATE() ");
 	 if(mysqli_num_rows($query) == 0)
 	{
 		echo "<tr><td colspan = '4'>no rows returned</td></tr>";
@@ -28,7 +28,7 @@ $count = 1;
 	{
 	while($row = mysqli_fetch_row($query))
     	{
-    		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><td data-th='Edit'><i id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
+    		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><input type='hidden' value={$row[8]} name='uid'><td data-th='Edit'><a href='./home.php?uid="."{$row[8]}"."' id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
                   <td data-th='Delete'><i class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
 		    $count++;
     	}
@@ -40,7 +40,7 @@ elseif($_POST['ids'] == "all"){
 	
 	$count = 1;
      
-	 $query = mysqli_query($con, "SELECT userdetail.fname,userdetail.mname,userdetail.lname,userdetail.designation,userdetail.email,userdetail.cmobile,subscription.startdate,subscription.enddate FROM userdetail INNER JOIN subscription ON userdetail.uid = subscription.uid");
+	 $query = mysqli_query($con, "SELECT userdetail.fname,userdetail.mname,userdetail.lname,userdetail.designation,userdetail.email,userdetail.cmobile,subscription.startdate,subscription.enddate,userdetail.uid FROM userdetail INNER JOIN subscription ON userdetail.uid = subscription.uid");
 	 if(mysqli_num_rows($query) == 0)
 	{
 		echo "<tr><td colspan = '4'>no rows returned</td></tr>";
@@ -49,7 +49,7 @@ elseif($_POST['ids'] == "all"){
 	{
 	while($row = mysqli_fetch_row($query))
     	{
-    		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><td data-th='Edit'><i id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
+    		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><input type='hidden' value={$row[8]} name='uid'><td data-th='Edit'> <a href='./home.php?uid="."{$row[8]}"."' id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
                   <td data-th='Delete'><i class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
 		    $count++;
     	}
@@ -64,7 +64,7 @@ elseif($_POST['ids'] == "inactive"){
 	$body = "Hello!, Please Renew your subscription";
 	$emailList = array();
      
-	 $query = mysqli_query($con, "SELECT userdetail.fname,userdetail.mname,userdetail.lname,userdetail.designation,userdetail.email,userdetail.cmobile,subscription.startdate,subscription.enddate FROM userdetail INNER JOIN subscription ON userdetail.uid = subscription.uid WHERE DATE_FORMAT(subscription.enddate, '%Y-%m-%d') < CURDATE()");
+	 $query = mysqli_query($con, "SELECT userdetail.fname,userdetail.mname,userdetail.lname,userdetail.designation,userdetail.email,userdetail.cmobile,subscription.startdate,subscription.enddate,userdetail.uid FROM userdetail INNER JOIN subscription ON userdetail.uid = subscription.uid WHERE DATE_FORMAT(subscription.enddate, '%Y-%m-%d') < CURDATE()");
 	 if(mysqli_num_rows($query) == 0)
 	{
 		echo "<tr><td colspan = '4'>no rows returned</td></tr>";
@@ -74,7 +74,7 @@ elseif($_POST['ids'] == "inactive"){
 	while($row = mysqli_fetch_row($query))
     	{
 			array_push($emailList,$row[4]);
-    		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><td data-th='Edit'><i id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
+    		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><input type='hidden' value={$row[8]} name='uid'><td data-th='Edit'><a href='./home.php?uid="."{$row[8]}"."'  id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
                   <td data-th='Delete'><i class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
 		    $count++;
     	}

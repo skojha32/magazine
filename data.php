@@ -2,7 +2,9 @@
 
 require "config.php";
 
-echo "<table class='rwd-table' style='margin:auto;'>";
+echo "<br><br><table class='rwd-table' style='margin:auto;'>";
+
+
 
 echo "<tr>
     <th>S.No</th>
@@ -78,7 +80,7 @@ elseif($_POST['ids'] == "inactive"){
                   <td data-th='Delete'><i class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
 		    $count++;
     	}
-		 echo "</table>";
+		 echo "</table><br><br>";
 	foreach($emailList as $email){
 		
 		$ids .= $email.";";
@@ -89,12 +91,5 @@ elseif($_POST['ids'] == "inactive"){
     }
 	
 }
-else{
-	
-	echo "Hello World";
-	echo $_POST['ids'];
-}
-
-
 
 ?>

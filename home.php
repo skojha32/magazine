@@ -82,26 +82,26 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="portfolio.html">Masters</a>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Masters</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Congregation Master</a></li>
-                                            <li><a href="about.html">User Master</a></li>
+                                            <li><a href="#">Congregation</a></li>
+                                            <li><a href="#">Users</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="portfolio.html">Transactions</a>
+                                    <li><a href="#">Transactions</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Subscription</a></li>
+                                            <li><a href="home.php">Subscription</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="report.php">Reports</a>
+                                    <li><a href="#">Reports</a>
                                         <ul class="dropdown">
                                             <li><a href="report.php">Subscription Report</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="portfolio.html">Settings</a>
+                                    <li><a href="#">Settings</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Backup</a></li>
+                                            <li><a href="#">Backup</a></li>
 											<li><a href="add_admin.php">Add Admin</a></li>
                                         </ul>
                                     </li>
@@ -178,13 +178,12 @@
 		$query =  mysqli_query($con,"SELECT * FROM `subscription` WHERE uid=$uid");	
 		while($data = mysqli_fetch_assoc($query))
 		{
-			array_push($uid_data, $data['subid'],$data['type'],$data['comment'],$data['startdate'],$data['enddate'],$data['paymethod'],$data['comment1'],$data['renew'],$data['renewdate'],$data['cancel']);
+			array_push($uid_data, $data['subid'],$data['type'],$data['comment'],$data['startdate'],$data['enddate'],$data['paymethod'],$data['comment1']);
 		}
+		
 
 	}
-	
-
-	?>
+?>
             <!-- Single gallery Item -->
             <div id="myDIV1" class="new" data-wow-delay="0.2s">
                
@@ -196,11 +195,11 @@
                        	<div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="entrydate">Entry Date:</label>
-                            <input type="date" class="form-control" id="entrydate" name="entrydate" value=<?php if(isset($uid_data)){ echo "'".$uid_data[18]."'" ; }?>>
+                            <input type="date" class="form-control" id="entrydate" name="entrydate" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[18]."'" ; }?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="fname">First Name:</label>
-                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value=<?php if(isset($uid_data)){  echo "'".$uid_data[0]."'";}?>>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required value=<?php if(isset($uid_data)){  echo "'".$uid_data[0]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="mname">Middle Name:</label>
@@ -216,12 +215,13 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="designation">Designation</label>
-                            <select id="designation" name="designation" class="form-control" value=<?php if(isset($uid_data)){  echo "'".$uid_data[4]."'";}?>>
-                              <option >Fr</option>
-                              <option >Sr</option>
-                              <option>Bro</option>
+                            <select id="designation" name="designation" class="form-control" required value=<?php if(isset($uid_data)){  echo "'".$uid_data[4]."'";}?>>
+                              <option disabled selected value> -- Select an option -- </option>
+							  <option>Fr</option>
+                              <option>Sr</option>
                               <option>Mr</option>
                               <option>Mrs</option>
+							  <option>Miss</option>
                             </select>
                           </div>
                           <div class="form-group col-md-6">
@@ -230,8 +230,9 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="gender">Gender</label>
-                            <select id="gender" name="gender" class="form-control" value=<?php if(isset($uid_data)){  echo "'".$uid_data[6]."'";}?>>
-                              <option selected>Male</option>
+                            <select id="gender" name="gender" class="form-control" required value=<?php if(isset($uid_data)){  echo "'".$uid_data[6]."'";}?>>
+                              <option disabled selected value> -- Select an option -- </option>
+							  <option>Male</option>
                               <option>Female</option>
                             </select>
                           </div>
@@ -245,11 +246,11 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cmobile">Mobile:</label>
-                            <input type="tel" class="form-control" id="cmobile" name="cmobile" placeholder="" value=<?php if(isset($uid_data)){  echo "'".$uid_data[9]."'";}?>>
+                            <input type="tel" class="form-control" id="cmobile" name="cmobile" placeholder="" required value=<?php if(isset($uid_data)){  echo "'".$uid_data[9]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="" value=<?php if(isset($uid_data)){  echo "'".$uid_data[10]."'";}?>>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="" required value=<?php if(isset($uid_data)){  echo "'".$uid_data[10]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="phone">Phone:</label>
@@ -257,11 +258,11 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="nationality">Nationality:</label>
-                            <input type="text" class="form-control" id="nationality" name="nationality" placeholder="" value=<?php  if(isset($uid_data)){echo "'".$uid_data[12]."'"; }?>>
+                            <input type="text" class="form-control" id="nationality" name="nationality" placeholder="" required value=<?php  if(isset($uid_data)){echo "'".$uid_data[12]."'"; }?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cstate">State:</label>
-                            <input type="text" class="form-control" id="cstate" name="cstate" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[13]."'";}?>>
+                            <input type="text" class="form-control" id="cstate" name="cstate" placeholder="" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[13]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="ccity">City:</label>
@@ -269,15 +270,15 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cdistrict">District:</label>
-                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[15]."'";}?>>
+                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[15]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="caddress">Address:</label>
-                            <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St" value=<?php if(isset($uid_data)){ echo "'".$uid_data[16]."'" ; }?>>
+                            <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[16]."'" ; }?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cpin">PIN:</label>
-                            <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[17]."'" ; }?>>
+                            <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[17]."'" ; }?>>
                           </div>
                           <!--<input type="hidden" name="uid" value="0">-->
 						  </div>
@@ -296,8 +297,9 @@
     <div class="form-group col-md-6">
         <label for="type">
             Subscription Type:</label>
-        <select id="type" name="type" class="form-control" value=<?php if(isset($uid_data)){ echo "'".$uid_data[20]."'" ; }?>>
-          <option selected>Paid</option>
+        <select id="type" name="type" class="form-control" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[20]."'" ; }?>>
+          <option disabled selected value> -- Select an option -- </option>
+		  <option>Paid</option>
           <option>Complementary</option>
           <option>Others</option>
         </select>
@@ -308,17 +310,18 @@
   </div>
   <div class="form-group col-md-6">
   <label for="startdate">Period From:</label>
-  <input type="date" class="form-control" id="startdate" name="startdate" placeholder=""  value=<?php if(isset($uid_data)){ echo "'".$uid_data[22]."'" ; }?>>
+  <input type="date" class="form-control" id="startdate" name="startdate" placeholder=""  required value=<?php if(isset($uid_data)){ echo "'".$uid_data[22]."'" ; }?>>
   </div>
   <div class="form-group col-md-6">
     <label for="enddate">Period To:</label>
-    <input type="date" class="form-control" id="enddate" name="enddate" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[23]."'" ; }?>>
+    <input type="date" class="form-control" id="enddate" name="enddate" placeholder="" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[23]."'" ; }?>>
     </div>
     <div class="form-group col-md-6">
         <label for="paymethod">
             Method Of Payment:</label>
-        <select id="paymethod" name="paymethod" class="form-control" value=<?php if(isset($uid_data)){ echo "'".$uid_data[24]."'" ; }?>>
-          <option selected>Cash</option>
+        <select id="paymethod" name="paymethod" class="form-control" required value=<?php if(isset($uid_data)){ echo "'".$uid_data[24]."'" ; }?>>
+          <option disabled selected value> -- Select an option -- </option>
+		  <option>Cash</option>
           <option>Cheque</option>
           <option>Bank</option>
           <option>Others</option>
@@ -329,32 +332,10 @@
         <input type="text" class="form-control" id="comment1" name="comment1" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[25]."'" ; }?>>
         </div>
 
-        <div class="form-group col-md-6">
-            <label for="renew">
-                Renew:</label>
-            <select id="renew" name="renew" class="form-control" value=<?php if(isset($uid_data)){ echo "'".$uid_data[26]."'" ; }?>>
-              <option selected>No</option>
-              <option>Yes</option>
-            </select>
-          </div>
-  <div class="form-group col-md-6">
-  <label for="renew_date">Renew Period To:</label>
-  <input type="date" class="form-control" id="renew_date" name="renew_date" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[27]."'" ; }?>>
-  </div>
-
-  <div class="form-group col-md-6">
-    <label for="cancel">
-        Cancel:</label>
-    <select id="cancel" name="cancel" class="form-control" value=<?php  if(isset($uid_data)){ echo "'".$uid_data[28]."'" ; }?>>
-      <option selected>No</option>
-      <option>Yes</option>
-    </select>
-  </div>
-
   </div>
 </div>
                         <button name="sbmt" type="submit" class="btn pixel-btn mt-15">Save</button>
-                        <button type="submit" class="btn pixel-btn mt-15">Cancel</button>
+                        <button type="reset" class="btn pixel-btn mt-15">Clear</button>
                       </form>
                 </div>
                 
@@ -395,10 +376,10 @@
         $startdate = test_input($_POST['startdate']);
         $enddate = test_input($_POST['enddate']);
         $paymethod = test_input($_POST['paymethod']);
-        $renew = test_input($_POST['renew']);
+        //$renew = test_input($_POST['renew']);
         $comment1 = test_input($_POST['comment1']);
-        $renew_date = test_input($_POST['renew_date']);
-        $cancel = test_input($_POST['cancel']);
+        //$renew_date = test_input($_POST['renew_date']);
+        //$cancel = test_input($_POST['cancel']);
         $cdistrict = test_input($_POST['cdistrict']);
         //$uid = $_POST['uid'];
         $uid = 0;
@@ -408,10 +389,7 @@
         } 
         if ($comment1 == ""){
           $comment1 = "NULL";
-        } 
-        if ($renew_date == ""){
-          $renew_date = "NULL";
-        } 
+        }  
        if($fname =="" ||  $entrydate=="" ||  $gender =="" || $cmobile=="" || $email=="" || $nationality == "" || $cstate == "" || $cdistrict == "" || $caddress == "" || $cpin == "" || $type == "" || $paymethod == "" || $startdate == "" || $enddate == ""   ){
            echo "<script type='text/javascript'>alert('Enter All the details Carefully')</script>";
            echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
@@ -476,7 +454,7 @@
 			   $query = mysqli_query($con,"SELECT uid from `userdetail` where email='$email'");
                $uid_r = mysqli_fetch_assoc($query);
                $uid = $uid_r['uid'];
-               $query = mysqli_query($con,"INSERT INTO `subscription`( `uid`, `type`, `paymethod`, `renew`, `startdate`, `enddate`, `renewdate`, `cancel`, `comment`,`comment1`) VALUES ($uid,'$type','$paymethod','$renew','$startdate','$enddate','$renew_date','$cancel','$comment','$comment1')");
+               $query = mysqli_query($con,"INSERT INTO `subscription`( `uid`, `type`, `paymethod`, `startdate`, `enddate`, `comment`,`comment1`) VALUES ($uid,'$type','$paymethod','$startdate','$enddate','$comment','$comment1')");
                if($query){
 				   echo "<script type='text/javascript'>alert('Success')</script>";
 			   }
@@ -543,7 +521,7 @@
                     });
                 });
             });
-            </script>
+</script>
 			<input type="submit" class="btn pixel-btn mt-15" id="all" name="all" value="All" />
 			<input type="submit" class="btn pixel-btn mt-15" id="active" name="active" value="Active" />
 			<input type="submit" class="btn pixel-btn mt-15" id="inactive" name="inactive" value="Inactive" />

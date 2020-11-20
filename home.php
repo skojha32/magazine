@@ -27,6 +27,8 @@
 </head>
 
 <body>
+
+	
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="lds-ellipsis">
@@ -92,9 +94,9 @@
                                             <li><a href="index.html">Subscription</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="portfolio.html">Reports</a>
+                                    <li><a href="report.php">Reports</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Subscription Report</a></li>
+                                            <li><a href="report.php">Subscription Report</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="portfolio.html">Settings</a>
@@ -162,39 +164,61 @@
             </style>
         
 
+<?php
+	if(isset($_GET['uid']))
+	{	$uid_data = array();
+		$uid = $_GET['uid'];
+		$query =  mysqli_query($con,"SELECT * FROM `userdetail` WHERE uid=$uid");
+		while($data = mysqli_fetch_assoc($query))
+			{
+
+				array_push($uid_data, $data['fname'],$data['mname'],$data['lname'],$data['conginitial'],$data['designation'],$data['hname'],$data['gender'],$data['oname'],$data['congname'],$data['cmobile'],$data['email'],$data['aphone'],$data['nationality'],$data['cstate'],$data['cdistrict'],$data['ccity'],$data['caddress'],$data['cpin'],$data['entrydate']);
+
+			}
+		$query =  mysqli_query($con,"SELECT * FROM `subscription` WHERE uid=$uid");	
+		while($data = mysqli_fetch_assoc($query))
+		{
+			array_push($uid_data, $data['subid'],$data['type'],$data['comment'],$data['startdate'],$data['enddate'],$data['paymethod'],$data['comment1'],$data['renew'],$data['renewdate'],$data['cancel']);
+		}
+
+	}
+	
+
+	?>
             <!-- Single gallery Item -->
             <div id="myDIV1" class="new" data-wow-delay="0.2s">
                
                 <div class="new1">
 
 
-                      <form id="inputform" class="form-group-lg" method="POST" action=<?php echo $_SERVER['PHP_SELF']; ?>>
-                        <div class="form-row">
+                      <form class="form-group-lg" method="POST" action=<?php echo $_SERVER['PHP_SELF']; ?>>
+                        
+                       	<div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="entrydate">Entry Date:</label>
-                            <input type="date" class="form-control" id="entrydate" name="entrydate" required>
+                            <input type="date" class="form-control" id="entrydate" name="entrydate" value=<?php if(isset($uid_data)){ echo "'".$uid_data[18]."'" ; }?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="fname">First Name:</label>
-                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value=<?php if(isset($uid_data)){  echo "'".$uid_data[0]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="mname">Middle Name:</label>
-                            <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name">
+                            <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name" value=<?php if(isset($uid_data)){  echo "'".$uid_data[1]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="lname">Last Name:</label>
-                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value=<?php if(isset($uid_data)){  echo "'".$uid_data[2]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="conginitial">Initial Of Congregation:</label>
-                            <input type="text" class="form-control" id="conginitial" name="conginitial" placeholder="">
+                            <input type="text" class="form-control" id="conginitial" name="conginitial" placeholder="" value=<?php if(isset($uid_data)){  echo "'".$uid_data[3]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="designation">Designation</label>
-                            <select id="designation" name="designation" class="form-control" required>
-                              <option selected>Fr</option>
-                              <option>Sr</option>
+                            <select id="designation" name="designation" class="form-control" value=<?php if(isset($uid_data)){  echo "'".$uid_data[4]."'";}?>>
+                              <option >Fr</option>
+                              <option >Sr</option>
                               <option>Bro</option>
                               <option>Mr</option>
                               <option>Mrs</option>
@@ -202,58 +226,58 @@
                           </div>
                           <div class="form-group col-md-6">
                             <label for="hname">House Name:</label>
-                            <input type="text" class="form-control" id="hname" name="hname" placeholder="">
+                            <input type="text" class="form-control" id="hname" name="hname" placeholder="" value=<?php if(isset($uid_data)){ echo   "'".$uid_data[5]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="gender">Gender</label>
-                            <select id="gender" name="gender" class="form-control" required>
+                            <select id="gender" name="gender" class="form-control" value=<?php if(isset($uid_data)){  echo "'".$uid_data[6]."'";}?>>
                               <option selected>Male</option>
                               <option>Female</option>
                             </select>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="oname">Official Name:</label>
-                            <input type="text" class="form-control" id="oname" name="oname" placeholder="">
+                            <input type="text" class="form-control" id="oname" name="oname" placeholder="" value=<?php if(isset($uid_data)){  echo "'".$uid_data[7]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="congname">Congregation/Diocese Name:</label>
-                            <input type="text" class="form-control" id="congname"  name="congname" placeholder="">
+                            <input type="text" class="form-control" id="congname"  name="congname" placeholder="" value=<?php if(isset($uid_data)){  echo "'".$uid_data[8]."'";} ?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cmobile">Mobile:</label>
-                            <input type="tel" class="form-control" id="cmobile" name="cmobile" placeholder="" required>
+                            <input type="tel" class="form-control" id="cmobile" name="cmobile" placeholder="" value=<?php if(isset($uid_data)){  echo "'".$uid_data[9]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="" value=<?php if(isset($uid_data)){  echo "'".$uid_data[10]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="phone">Phone:</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="">
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="" value=<?php  if(isset($uid_data)){ echo "'".$uid_data[11]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="nationality">Nationality:</label>
-                            <input type="text" class="form-control" id="nationality" name="nationality" placeholder="" required>
+                            <input type="text" class="form-control" id="nationality" name="nationality" placeholder="" value=<?php  if(isset($uid_data)){echo "'".$uid_data[12]."'"; }?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cstate">State:</label>
-                            <input type="text" class="form-control" id="cstate" name="cstate" placeholder="" required>
+                            <input type="text" class="form-control" id="cstate" name="cstate" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[13]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="ccity">City:</label>
-                            <input type="text" class="form-control" id="ccity" name="ccity" placeholder="">
+                            <input type="text" class="form-control" id="ccity" name="ccity" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[14]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cdistrict">District:</label>
-                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="" required>
+                            <input type="text" class="form-control" name="cdistrict" id="cdistrict" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[15]."'";}?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="caddress">Address:</label>
-                            <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St" required>
+                            <input type="text" class="form-control" id="caddress" name="caddress" placeholder="1234 Main St" value=<?php if(isset($uid_data)){ echo "'".$uid_data[16]."'" ; }?>>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="cpin">PIN:</label>
-                            <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="" required>
+                            <input type="pin" class="form-control" id="cpin" name="cpin" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[17]."'" ; }?>>
                           </div>
                           <!--<input type="hidden" name="uid" value="0">-->
 						  </div>
@@ -266,10 +290,13 @@
   <div class="form-group">
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
+
+  <input type="hidden" class="form-control" id="subid" name="subid" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[19]."'";}?>>
+
     <div class="form-group col-md-6">
         <label for="type">
             Subscription Type:</label>
-        <select id="type" name="type" class="form-control">
+        <select id="type" name="type" class="form-control" value=<?php if(isset($uid_data)){ echo "'".$uid_data[20]."'" ; }?>>
           <option selected>Paid</option>
           <option>Complementary</option>
           <option>Others</option>
@@ -277,20 +304,20 @@
       </div>
   <div class="form-group col-md-6">
   <label for="comment">Other Details:</label>
-  <input type="text" class="form-control" id="comment" name="comment" placeholder="">
+  <input type="text" class="form-control" id="comment" name="comment" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[21]."'"; }?>>
   </div>
   <div class="form-group col-md-6">
   <label for="startdate">Period From:</label>
-  <input type="date" class="form-control" id="startdate" name="startdate" placeholder="" required>
+  <input type="date" class="form-control" id="startdate" name="startdate" placeholder=""  value=<?php if(isset($uid_data)){ echo "'".$uid_data[22]."'" ; }?>>
   </div>
   <div class="form-group col-md-6">
     <label for="enddate">Period To:</label>
-    <input type="date" class="form-control" id="enddate" name="enddate" placeholder="" required>
+    <input type="date" class="form-control" id="enddate" name="enddate" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[23]."'" ; }?>>
     </div>
     <div class="form-group col-md-6">
         <label for="paymethod">
             Method Of Payment:</label>
-        <select id="paymethod" name="paymethod" class="form-control">
+        <select id="paymethod" name="paymethod" class="form-control" value=<?php if(isset($uid_data)){ echo "'".$uid_data[24]."'" ; }?>>
           <option selected>Cash</option>
           <option>Cheque</option>
           <option>Bank</option>
@@ -299,26 +326,26 @@
       </div>
       <div class="form-group col-md-6">
         <label for="comment1">Other Details:</label>
-        <input type="text" class="form-control" id="comment1" name="comment1" placeholder="">
+        <input type="text" class="form-control" id="comment1" name="comment1" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[25]."'" ; }?>>
         </div>
 
         <div class="form-group col-md-6">
             <label for="renew">
                 Renew:</label>
-            <select id="renew" name="renew" class="form-control">
+            <select id="renew" name="renew" class="form-control" value=<?php if(isset($uid_data)){ echo "'".$uid_data[26]."'" ; }?>>
               <option selected>No</option>
               <option>Yes</option>
             </select>
           </div>
   <div class="form-group col-md-6">
   <label for="renew_date">Renew Period To:</label>
-  <input type="date" class="form-control" id="renew_date" name="renew_date" placeholder="">
+  <input type="date" class="form-control" id="renew_date" name="renew_date" placeholder="" value=<?php if(isset($uid_data)){ echo "'".$uid_data[27]."'" ; }?>>
   </div>
 
   <div class="form-group col-md-6">
     <label for="cancel">
         Cancel:</label>
-    <select id="cancel" name="cancel" class="form-control">
+    <select id="cancel" name="cancel" class="form-control" value=<?php  if(isset($uid_data)){ echo "'".$uid_data[28]."'" ; }?>>
       <option selected>No</option>
       <option>Yes</option>
     </select>
@@ -327,20 +354,12 @@
   </div>
 </div>
                         <button name="sbmt" type="submit" class="btn pixel-btn mt-15">Save</button>
-                        <button type="reset" class="btn pixel-btn mt-15" onclick="cancel()">Cancel</button>
+                        <button type="submit" class="btn pixel-btn mt-15">Cancel</button>
                       </form>
                 </div>
                 
             </div>
-			
-			
-<script>
-function cancel() {
-  document.getElementById("inputform").reset();
-}
-</script>
-			
-			
+
 
 <?php
 
@@ -474,6 +493,8 @@ function cancel() {
                 #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
             }
         }
+
+        
       }  
     }
 ?>
@@ -550,9 +571,6 @@ function cancel() {
                   
                 }
                 </script>
-				
-				
-
         
 
 

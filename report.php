@@ -1,3 +1,4 @@
+<?php require "config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,25 +81,26 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="portfolio.html">Masters</a>
+                                    <li><a href="#">Masters</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Congregation Master</a></li>
-                                            <li><a href="about.html">User Master</a></li>
+                                            <li><a href="#">Congregation</a></li>
+                                            <li><a href="#">Users</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="portfolio.html">Transactions</a>
+                                    <li><a href="#">Transactions</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Subscription</a></li>
+                                            <li><a href="home.php">Subscription</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="portfolio.html">Reports</a>
+                                    <li><a href="#">Reports</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Subscription Report</a></li>
+                                            <li><a href="report.php">Subscription Report</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="portfolio.html">Settings</a>
+                                    <li><a href="#">Settings</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Backup</a></li>
+                                            <li><a href="#">Backup</a></li>
+											<li><a href="add_admin.php">Add Admin</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -149,47 +151,67 @@
 
     <!-- ##### Portfolio Area Start ###### -->
     <div class="pixel-portfolio-area section-padding-100">
-      <form class="form-group-lg" style="margin:auto;width: 60%;padding: 10px 10px;">
+      <form id="filterform" class="form-group-lg" style="margin:auto;width: 60%;padding: 10px 10px;">
         <div class="form-row ">
             <div class="form-group col-md-4 radio-buttons">
                 <label class="container">District
-                    <input type="radio" checked="checked" name="radio">
+                    <input type="radio" checked="checked" name="radio" value="District">
                     <span class="checkmark"></span>
                 </label>
-                <select id="inputState" class="form-control">
-                  <option selected>1</option>
-                  <option>2</option>
-                  <option>3</option>
+                <select id="districtState" class="form-control">
+				   <option disabled selected value> -- Select an option -- </option>
+				<?php
+				
+				   $query =  mysqli_query($con, "SELECT DISTINCT cdistrict FROM userdetail");
+				   
+				    if(mysqli_num_rows($query) == 0)
+					{
+						exit();
+					}
+					else
+					{
+						while($row = mysqli_fetch_row($query))
+						{
+									echo "<option>{$row[0]}</option>";
+						}
+						echo "</table>";
+					}
+				
+				?>
                 </select>
               </div>
               <div class="form-group col-md-4 rd1">
-                <label class="container">Type
-                    <input type="radio" name="radio">
+                <label class="container"> Subscription Type
+                    <input type="radio" name="radio" value="subtype">
                     <span class="checkmark"></span>
                   </label>
-                <select id="inputState" class="form-control">
-                  <option selected>1</option>
-                  <option>2</option>
-                  <option>3</option>
+                <select id="subState" class="form-control">
+				  <option disabled selected value> -- Select an option -- </option>
+                  <option>Paid</option>
+          <option>Complementary</option>
+          <option>Others</option>
                 </select>
               </div>
               <div class="form-group col-md-4 rd1">
                 <label class="container">Payment Type
-                    <input type="radio" name="radio">
+                    <input type="radio" name="radio" value="paytype">
                     <span class="checkmark"></span>
                   </label>
-                <select id="inputState" class="form-control">
-                  <option selected>1</option>
-                  <option>2</option>
-                  <option>3</option>
+                <select id="payState" class="form-control">
+				  <option disabled selected value> -- Select an option -- </option>
+                  <option>Cash</option>
+          <option>Cheque</option>
+          <option>Bank</option>
+          <option>Others</option>
                 </select>
               </div>
 
         </div>
-        <button type="submit" class="btn pixel-btn mt-15">Show</button>
-                        <button type="submit" class="btn pixel-btn mt-15">Clear</button>
+        <button type="submit" class="btn pixel-btn mt-15" id="show" name="show">Show</button>
+                        <button type="reset" class="btn pixel-btn mt-15">Clear</button>
                         <button type="submit" class="btn pixel-btn mt-15">Print</button>
                         <button type="submit" class="btn pixel-btn mt-15">Export</button>
+						<span id="result"></span> 
 </form>
             <!-- Single gallery Item -->
             <link rel="stylesheet" href="./tstyle.css">
@@ -213,6 +235,42 @@
                   
                 }
                 </script>
+
+<script>
+            $(document).ready(function(){
+                $("#show").click(function(e){
+					e.preventDefault();
+					var Id = this.id;
+					var checked_option = $("input[name='radio']:checked").val();
+					if(checked_option == "District")
+				    {
+						var selected_option = $('#districtState option').filter(':selected').text();
+						
+					}
+					else if(checked_option == "subtype")
+					{
+						var selected_option = $('#subState option').filter(':selected').text();
+						
+					}
+					else if(checked_option == "paytype")
+					{
+						var selected_option = $('#payState option').filter(':selected').text();
+						
+					}					
+						$.ajax({
+                        url:'report_data.php',
+                        type:'post',
+						data: {
+							radio_option:checked_option,
+							select_option:selected_option
+						},
+						success:function(result){
+							$("#result").html(result);
+							}
+                    });
+                });
+            });
+ </script>
         
 
 
@@ -220,8 +278,7 @@
 
            
 
-       
-
+     
       
     </div>
     <br>

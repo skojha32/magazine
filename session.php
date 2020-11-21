@@ -1,6 +1,5 @@
 <?php 
 require "config.php"; 
-require "subs_count.php"; 
 //Authentication Code
 if(isset($_COOKIE['uname']) && isset($_COOKIE['sessionid'])){
     $uname = $_COOKIE['uname'];

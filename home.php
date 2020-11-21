@@ -1,5 +1,5 @@
 <?php 
-require "session.php"; 
+require "subs_count.php"; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +66,7 @@ require "session.php";
           <nav class="classy-navbar justify-content-between" id="pixelNav">
 
             <!-- Nav brand -->
-            <a href="home.html" class="nav-brand" style="color:white;">KJC</a>
+            <a href="home.php" class="nav-brand" style="color:white;">KJC</a>
 
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
@@ -85,12 +85,6 @@ require "session.php";
               <div class="classynav">
                 <ul>
                   <li><a href="#">Home</a></li>
-                  <li><a href="#">Masters</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Congregation</a></li>
-                      <li><a href="#">Users</a></li>
-                    </ul>
-                  </li>
                   <li><a href="#">Transactions</a>
                     <ul class="dropdown">
                       <li><a href="home.php">Subscription</a></li>
@@ -447,7 +441,7 @@ require "session.php";
               <img src="img/core-img/m1.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span class="counter"><?php echo $all; ?></span></h2>
+              <h2><span><?php echo $all; ?></span></h2>
               <h6>Total Subscriber</h6>
             </div>
           </div>
@@ -460,7 +454,7 @@ require "session.php";
               <img src="img/core-img/m2.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span class="counter"><?php echo $active; ?></span></h2>
+              <h2><span><?php echo $active; ?></span></h2>
               <h6>Active Subscriber</h6>
             </div>
           </div>
@@ -473,7 +467,7 @@ require "session.php";
               <img src="img/core-img/m3.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span class="counter"><?php echo $inactive; ?></span></h2>
+              <h2><span><?php echo $inactive; ?></span></h2>
               <h6>Inactive Subscriber</h6>
             </div>
           </div>
@@ -486,7 +480,7 @@ require "session.php";
               <img src="img/core-img/m4.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span class="counter"><?php echo $today; ?></span></h2>
+              <h2><span><?php echo $today; ?></span></h2>
               <h6>New Subscriber Added</h6>
             </div>
           </div>

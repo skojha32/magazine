@@ -35,7 +35,7 @@
 <form class="modal-content" method="post" action="changepasswd.php">
 <div class="login">
   <div class="form">
-    <h2>Login</h2>
+    <h2>Change Password</h2>
     <div class="form-field">
       <label for="login-mail"><i class="fa fa-user"></i></label>
       <input id="login-mail" type="password" name="cpasswd" placeholder="Current Password" required>

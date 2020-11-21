@@ -32,7 +32,7 @@
 <form class="modal-content" method="post" action="add_admin.php">
 <div class="login">
   <div class="form">
-    <h2>Login</h2>
+    <h2>New Admin Registration</h2>
     <div class="form-field">
       <label for="login-mail"><i class="fa fa-user"></i></label>
       <input id="login-mail" type="text" name="uname" placeholder="Username" required>

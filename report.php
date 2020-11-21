@@ -58,71 +58,73 @@ require "session.php";
 </style>
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
-        <!-- Navbar Area -->
-        <div class="pixel-main-menu" id="sticker">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container-fluid">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="pixelNav">
+    <!-- Navbar Area -->
+    <div class="pixel-main-menu" id="sticker">
+      <div class="classy-nav-container breakpoint-off">
+        <div class="container-fluid">
+          <!-- Menu -->
+          <nav class="classy-navbar justify-content-between" id="pixelNav">
 
-                        <!-- Nav brand -->
-                        <a href="home.html" class="nav-brand" style="color:white;">KJC</a>
+            <!-- Nav brand -->
+            <a href="home.html" class="nav-brand" style="color:white;">KJC</a>
 
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="#">Masters</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Congregation</a></li>
-                                            <li><a href="#">Users</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Transactions</a>
-                                        <ul class="dropdown">
-                                            <li><a href="home.php">Subscription</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Reports</a>
-                                        <ul class="dropdown">
-                                            <li><a href="report.php">Subscription Report</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Settings</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Change Password</a></li>
-											<li><a href="add_admin.php">Add Admin</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
-                                <!-- Top Social Info -->
-                                <div class="top-social-info ml-5">
-                                    <button type="button" class="btn1">
-                                        <span class="glyphicon glyphicon-log-out"></span> Log out
-                                      </button>
-                                </div>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
-                </div>
+            <!-- Navbar Toggler -->
+            <div class="classy-navbar-toggler">
+              <span class="navbarToggler"><span></span><span></span><span></span></span>
             </div>
+
+            <!-- Menu -->
+            <div class="classy-menu">
+
+              <!-- Close Button -->
+              <div class="classycloseIcon">
+                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+              </div>
+
+              <!-- Nav Start -->
+              <div class="classynav">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Masters</a>
+                    <ul class="dropdown">
+                      <li><a href="#">Congregation</a></li>
+                      <li><a href="#">Users</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Transactions</a>
+                    <ul class="dropdown">
+                      <li><a href="home.php">Subscription</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Reports</a>
+                    <ul class="dropdown">
+                      <li><a href="report.php">Subscription Report</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Settings</a>
+                    <ul class="dropdown">
+                      <li><a href="changepasswd.php">Change Password</a></li>
+                      <li><a href="add_admin.php">Add Admin</a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <!-- Top Social Info -->
+                <a href='logout.php'>
+                  <div class="top-social-info ml-5">
+                    <button type="button" class="btn1">
+                      <span class="glyphicon glyphicon-log-out"></span> Log out
+                    </button>
+                  </div>
+                </a>
+              </div>
+              <!-- Nav End -->
+            </div>
+          </nav>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->

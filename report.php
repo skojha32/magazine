@@ -161,10 +161,10 @@ require "session.php";
         <div class="form-row ">
             <div class="form-group col-md-4 radio-buttons">
                 <label class="container">District
-                    <input type="radio" checked="checked" name="radio" value="District">
+                    <input type="radio" checked="checked"  name="radio" value="District">
                     <span class="checkmark"></span>
                 </label>
-                <select id="districtState" class="form-control">
+                <select id="districtState" onchange="f1('District',this.value)" class="form-control">
 				   <option disabled selected value> -- Select an option -- </option>
 				<?php
 				
@@ -188,10 +188,10 @@ require "session.php";
               </div>
               <div class="form-group col-md-4 rd1">
                 <label class="container"> Subscription Type
-                    <input type="radio" name="radio" value="subtype">
+                    <input type="radio" name="radio"  value="subtype">
                     <span class="checkmark"></span>
                   </label>
-                <select id="subState" class="form-control">
+                <select id="subState" onchange="f1('subtype',this.value)" class="form-control">
 				  <option disabled selected value> -- Select an option -- </option>
                   <option>Paid</option>
           <option>Complementary</option>
@@ -200,10 +200,10 @@ require "session.php";
               </div>
               <div class="form-group col-md-4 rd1">
                 <label class="container">Payment Type
-                    <input type="radio" name="radio" value="paytype">
+                    <input type="radio" name="radio"  value="paytype">
                     <span class="checkmark"></span>
                   </label>
-                <select id="payState" class="form-control">
+                <select id="payState" onchange="f1('paytype',this.value)" class="form-control">
 				  <option disabled selected value> -- Select an option -- </option>
                   <option>Cash</option>
           <option>Cheque</option>
@@ -212,10 +212,11 @@ require "session.php";
                 </select>
               </div>
 
-        </div>
+        </div> 
         <button type="submit" class="btn pixel-btn mt-15" id="show" name="show">Show</button>
                         <button type="reset" class="btn pixel-btn mt-15">Clear</button>
-                        <button type="submit" class="btn pixel-btn mt-15">Print</button>
+                        
+                        <button type="submit"  class="btn pixel-btn mt-15" name="print1"> <a href="./print.php?radio_option=District&select_option=Bangalore Urban" id="print"> Print </a> </button>
                         <button type="submit" class="btn pixel-btn mt-15">Export</button>
 						<span id="result"></span> 
 </form>
@@ -243,6 +244,9 @@ require "session.php";
                 </script>
 
 <script>
+
+
+
             $(document).ready(function(){
                 $("#show").click(function(e){
 					e.preventDefault();
@@ -276,6 +280,18 @@ require "session.php";
                     });
                 });
             });
+
+       
+  function f1(result1,result2)
+  {
+
+  (document.getElementById("print").href="./print.php?radio_option="+result1+"&select_option="+result2);
+   }
+            
+
+            
+
+
  </script>
         
 

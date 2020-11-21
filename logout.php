@@ -1,6 +1,6 @@
 <?php
 // session_start();
-require "config.php";
+require "session.php";
 $uname = $_COOKIE['uname'];
 $delsession = mysqli_query($con, "UPDATE gateway SET sessionid=NULL WHERE username='$uname'");
 

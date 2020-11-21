@@ -1,24 +1,6 @@
 <?php
 
-require "config.php";
-//Authentication Check
-if(isset($_COOKIE['uname']) && isset($_COOKIE['sessionid'])){
-	$uname = $_COOKIE['uname'];
-	$csessionid = $_COOKIE['sessionid'];
-}
-else{
-	echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
-	echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
-}
-
-$fetchsess = mysqli_query($con,"SELECT sessionid FROM gateway WHERE username = '$uname'");
-$dbsessarray = mysqli_fetch_assoc($fetchsess);
-$dbsession = $dbsessarray['sessionid'];
-if($csessionid != $dbsession)
-{
-echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
-echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
-}
+require "session.php";
 
 echo "<br><br><table class='rwd-table' style='margin:auto;'>";
 
@@ -48,7 +30,7 @@ $count = 1;
 	while($row = mysqli_fetch_row($query))
     	{
     		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><input type='hidden' value={$row[8]} name='uid'><td data-th='Edit'><a href='./home.php?uid="."{$row[8]}"."' id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
-                  <td data-th='Delete'><i class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
+                  <td data-th='Delete'><a href='./home.php?uid="."{$row[8]}"."&action="."delete"."' id='btn_read_HTML_Table' class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
 		    $count++;
     	}
 		 echo "</table>";
@@ -69,7 +51,7 @@ elseif($_POST['ids'] == "all"){
 	while($row = mysqli_fetch_row($query))
     	{
     		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><input type='hidden' value={$row[8]} name='uid'><td data-th='Edit'> <a href='./home.php?uid="."{$row[8]}"."' id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
-                  <td data-th='Delete'><i class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
+                  <td data-th='Delete'><a href='./home.php?uid="."{$row[8]}"."&action="."delete"."' id='btn_read_HTML_Table' class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
 		    $count++;
     	}
 		 echo "</table>";
@@ -94,7 +76,7 @@ elseif($_POST['ids'] == "inactive"){
     	{
 			array_push($emailList,$row[4]);
     		echo "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='SubPeriodFromDate'>{$row[6]}</td><td data-th='SubPeriodToDate'>{$row[7]}</td><input type='hidden' value={$row[8]} name='uid'><td data-th='Edit'><a href='./home.php?uid="."{$row[8]}"."'  id='btn_read_HTML_Table' class='fa fa-edit' style='font-size: 20px;color:orange'></td>
-                  <td data-th='Delete'><i class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
+                  <td data-th='Delete'><a href='./home.php?uid="."{$row[8]}"."&action="."delete"."' id='btn_read_HTML_Table' class='fa fa-trash-o' style='font-size:20px;color:red'></i></td></tr>";
 		    $count++;
     	}
 		 echo "</table><br><br>";

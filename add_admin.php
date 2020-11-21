@@ -1,29 +1,9 @@
-<?php 
-//Authentication Check
-  require "config.php"; 
-  if(isset($_COOKIE['uname']) && isset($_COOKIE['sessionid'])){
-    $uname = $_COOKIE['uname'];
-    $csessionid = $_COOKIE['sessionid'];
-}
-else{
-    echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
-    echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
-}
-
-$fetchsess = mysqli_query($con,"SELECT sessionid FROM gateway WHERE username = '$uname'");
-$dbsessarray = mysqli_fetch_assoc($fetchsess);
-$dbsession = $dbsessarray['sessionid'];
-if($csessionid != $dbsession)
-{
-echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
-echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
-}
-?>
+<?php require "session.php"; ?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Login - </title>
+  <title>New Admin Registration - </title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'><link rel="stylesheet" href="./login_style.css">
 
 </head>
@@ -52,7 +32,7 @@ echo "<script type='text/javascript'>window.location.assign('index.php')</script
 <form class="modal-content" method="post" action="add_admin.php">
 <div class="login">
   <div class="form">
-    <h2>Add an Admin</h2>
+    <h2>Login</h2>
     <div class="form-field">
       <label for="login-mail"><i class="fa fa-user"></i></label>
       <input id="login-mail" type="text" name="uname" placeholder="Username" required>
@@ -91,9 +71,9 @@ echo "<script type='text/javascript'>window.location.assign('index.php')</script
         $paswd = $_POST['password'];
         
         if($uname=="" || $paswd=="")
-		{
-			echo "<script type='text/javascript'>alert('Enter the username and password')</script>";
-			echo "<script type='text/javascript'>window.location.assign('add_admin.php')</script>";
+    {
+      echo "<script type='text/javascript'>alert('Enter the username and password')</script>";
+      echo "<script type='text/javascript'>window.location.assign('add_admin.php')</script>";
         }
         else
         {

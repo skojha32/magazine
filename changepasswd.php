@@ -1,30 +1,12 @@
 <?php 
 //Authentication Check
-  require "config.php"; 
-    if(isset($_COOKIE['uname']) && isset($_COOKIE['sessionid'])){
-        $uname = $_COOKIE['uname'];
-        $csessionid = $_COOKIE['sessionid'];
-    }
-    else{
-        echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
-        echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
-    }
-  
-  $fetchsess = mysqli_query($con,"SELECT sessionid FROM gateway WHERE username = '$uname'");
-	$dbsessarray = mysqli_fetch_assoc($fetchsess);
-  $dbsession = $dbsessarray['sessionid'];
-  if($csessionid != $dbsession)
-  {
-    echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
-    echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
-  }
-
+  require "session.php"; 
 ?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Login - </title>
+  <title>Change Password - </title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'><link rel="stylesheet" href="./login_style.css">
 
 </head>
@@ -81,7 +63,7 @@
       <div class="arrow-wrapper">
         <span class="arrow"></span>
       </div>
-      <p class="button-text">SIGN IN</p>
+      <p class="button-text">Change Password</p>
     </button>
   </div>
   <div class="finished">

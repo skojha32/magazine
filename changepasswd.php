@@ -1,31 +1,24 @@
-<?php
-// session_start();
-require "config.php";
-if(isset($_COOKIE['uname']) && isset($_COOKIE['sessionid'])){
-  $uname = $_COOKIE['uname'];
-  $csessionid = $_COOKIE['sessionid'];
-  $delsession = mysqli_query($con, "UPDATE gateway SET sessionid=NULL WHERE username='$uname'");
-
-if(!$_delsession)
-{
-    echo "<script type='text/javascript'>alert('Something went Wrong! Logout unsuccessful')</script>";
-}
-
-if (isset($_SERVER['HTTP_COOKIE'])) {
-    $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
-    foreach($cookies as $cookie) {
-        $parts = explode('=', $cookie);
-        $name = trim($parts[0]);
-        setcookie($name, '', time()-1000);
-        setcookie($name, '', time()-1000, '/');
+<?php 
+//Authentication Check
+  require "config.php"; 
+    if(isset($_COOKIE['uname']) && isset($_COOKIE['sessionid'])){
+        $uname = $_COOKIE['uname'];
+        $csessionid = $_COOKIE['sessionid'];
     }
-}
-else {
-    echo "<script type='text/javascript'>alert('Something went Wrong! Logout unsuccessful')</script>";
-}
-}
+    else{
+        echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
+        echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
+    }
+  
+  $fetchsess = mysqli_query($con,"SELECT sessionid FROM gateway WHERE username = '$uname'");
+	$dbsessarray = mysqli_fetch_assoc($fetchsess);
+  $dbsession = $dbsessarray['sessionid'];
+  if($csessionid != $dbsession)
+  {
+    echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
+    echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
+  }
 
-// echo "<script type='text/javascript'>window.location.assign('login.php')</script>";
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -57,25 +50,32 @@ else {
     }
   </style>
 <!-- partial:index.partial.html -->
-<form class="modal-content" method="post" action="index.php">
+<form class="modal-content" method="post" action="changepasswd.php">
 <div class="login">
   <div class="form">
     <h2>Login</h2>
     <div class="form-field">
       <label for="login-mail"><i class="fa fa-user"></i></label>
-      <input id="login-mail" type="text" name="uname" placeholder="Username" required>
+      <input id="login-mail" type="password" name="cpasswd" placeholder="Current Password" required>
       <svg>
         <use href="#svg-check" />
       </svg>
     </div>
     <div class="form-field">
       <label for="login-password"><i class="fa fa-lock"></i></label>
-      <input id="login-password" type="password" name="password" placeholder="Password" pattern=".{6,}" required>
+      <input id="login-password" type="password" name="newpasswd" placeholder="New Password" pattern=".{6,}" required>
       <svg>
         <use href="#svg-check" />
       </svg>
     </div>
     
+    <div class="form-field">
+      <label for="login-password"><i class="fa fa-lock"></i></label>
+      <input id="login-password" type="password" name="cnewpasswd" placeholder="Confirm New Password" pattern=".{6,}" required>
+      <svg>
+        <use href="#svg-check" />
+      </svg>
+    </div>
     
     <button type="submit" class="button" name="sbmt">
       <div class="arrow-wrapper">
@@ -93,16 +93,16 @@ else {
 </form>
 
 <?php
-  require "config.php";
 	if(isset($_POST['sbmt']))
     {
-        $uname = $_POST['uname'];
-        $paswd = $_POST['password'];
+        $cpasswd = $_POST['cpasswd'];
+        $newpasswd = $_POST['newpasswd'];
+        $cnewpasswd = $_POST['cnewpasswd'];
         
-        if($uname=="" || $paswd=="")
+        if($newpasswd=="" || $cpasswd=="" || $cnewpasswd=="")
 		{
-			echo "<script type='text/javascript'>alert('Enter the username and password')</script>";
-			echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
+			echo "<script type='text/javascript'>alert('Fill all the fields')</script>";
+			echo "<script type='text/javascript'>window.location.assign('changepasswd.php')</script>";
         }
         else
         {
@@ -110,17 +110,16 @@ else {
 			$hasharray = mysqli_fetch_assoc($queryhash);
 			$hash = $hasharray['password'];
 			
-            if(password_verify($paswd, $hash))
+            if(password_verify($cpasswd, $hash))
             {
-              
-              $sessionid = uniqid();
-              $inssession = mysqli_query($con, "UPDATE gateway SET sessionid='$sessionid' WHERE username='$uname'");
-              if($inssession)
+              if ($newpasswd == $cnewpasswd)
               {
-                setcookie('sessionid', $sessionid, time() + (86400 * 7), "/");
-                setcookie('uname', $uname, time() + (86400 * 7), "/");
+                $hash = password_hash($newpasswd, PASSWORD_DEFAULT);
+                $updatequery =  mysqli_query($con, "UPDATE gateway SET password='$hash' WHERE username='$uname'"); 
+                echo "<script type='text/javascript'>alert('Password changed successfully')</script>";
                 echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
               }
+              
               else
               {
                 echo "<script type='text/javascript'>alert('something went wrong please try again.')</script>";
@@ -128,8 +127,8 @@ else {
             }
             else
             {
-				echo "<script type='text/javascript'>alert('Incorrect username or password.')</script>";
-				echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
+				echo "<script type='text/javascript'>alert('Incorrect password.')</script>";
+				echo "<script type='text/javascript'>window.location.assign('changepasswd.php')</script>";
             }
         }
     }

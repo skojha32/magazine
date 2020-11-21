@@ -1,4 +1,24 @@
-<?php require "config.php"; ?>
+<?php 
+//Authentication Check
+  require "config.php"; 
+  if(isset($_COOKIE['uname']) && isset($_COOKIE['sessionid'])){
+    $uname = $_COOKIE['uname'];
+    $csessionid = $_COOKIE['sessionid'];
+}
+else{
+    echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
+    echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
+}
+
+$fetchsess = mysqli_query($con,"SELECT sessionid FROM gateway WHERE username = '$uname'");
+$dbsessarray = mysqli_fetch_assoc($fetchsess);
+$dbsession = $dbsessarray['sessionid'];
+if($csessionid != $dbsession)
+{
+echo "<script type='text/javascript'>alert('Something went wrong redirecting to login page!')</script>";
+echo "<script type='text/javascript'>window.location.assign('index.php')</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -32,7 +52,7 @@
 <form class="modal-content" method="post" action="add_admin.php">
 <div class="login">
   <div class="form">
-    <h2>Login</h2>
+    <h2>Add an Admin</h2>
     <div class="form-field">
       <label for="login-mail"><i class="fa fa-user"></i></label>
       <input id="login-mail" type="text" name="uname" placeholder="Username" required>

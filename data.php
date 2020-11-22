@@ -4,7 +4,7 @@ require "session.php";
 
 session_start();
 
-echo "<br><br><table class='rwd-table' style='margin:auto;'>";
+echo "<br><br><table class='rwd-table' style='margin:auto; color:white;'>";
 
 
 echo "<tr>

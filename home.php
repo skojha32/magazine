@@ -66,7 +66,7 @@ require "subs_count.php";
           <nav class="classy-navbar justify-content-between" id="pixelNav">
 
             <!-- Nav brand -->
-            <a href="home.php" class="nav-brand" style="color:white;">KJC</a>
+            <a href="home.php" class="nav-brand" style="color:white;">Vachanam Balivediyil</a>
 
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
@@ -506,8 +506,8 @@ require "subs_count.php";
           <div class="copywrite-content" >
             <!-- Copywrite Text -->
             <p class="copywrite-text" style="margin-left:30%;"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Project is made by <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="developer.php" target="_blank">TechTeam</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
         </div>

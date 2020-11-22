@@ -149,7 +149,7 @@
 
   <!-- ##### Portfolio Area Start ###### -->
   <div class="pixel-portfolio-area section-padding-100">
-    <form id="filterform" class="form-group-lg" style="margin:auto;width: 60%;padding: 10px 10px;">
+    <form id="filterform" class="form-group-lg" style="margin:auto;width: 100%;padding: 10px 10px;">
       <div class="form-row ">
         <div class="form-group col-md-4 radio-buttons">
           <label class="container">District
@@ -208,6 +208,7 @@
   <button type="submit" class="btn pixel-btn mt-15" id="show" name="show">Show</button>
   <button type="reset" class="btn pixel-btn mt-15">Clear</button>
   <button class="btn pixel-btn mt-15" id="export" name="export">Export</button>
+<a href="print.php" target="_blank"><span class="btn pixel-btn mt-15">Print</span></a>
   <span id="result"></span> 
 </form>
 
@@ -279,9 +280,7 @@
 
 </div>
 
-<div class="form-group-lg" style="margin:auto;width: 60%;padding: 10px 10px;">
-<a href="print.php" target="_blank"><button class="btn pixel-btn mt-15">Print</button></a>
-</div>
+
 
 <br>
 <br>

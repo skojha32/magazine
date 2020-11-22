@@ -6,6 +6,8 @@ session_start();
 
 echo "<br><br>";
 
+$export =  array();
+
 $data =  "<table id='subsreport' class='rwd-table' style='color:white;'>";
 
 $data .= "<tr>
@@ -49,19 +51,22 @@ if(mysqli_num_rows($query) == 0)
 {
 		$data .= "<tr><td colspan = '4'>no rows returned</td></tr>";
 		$data .= "</table>";
-		unset($_SESSION["data"]); 
+		unset($_SESSION["data"]);
+		unset($_SESSION["export"]); 
 		echo $data;
 }
 else
 {
 	while($row = mysqli_fetch_row($query))
     	{
+			array_push($export,array("NAME" => $row[3]."."." ".$row[0]." ".$row[1]." ".$row[2],"EMAIL" => $row[4],"MOBILE" => $row[5],"ADDRESS" => $row[6],"CITY" => $row[7],"DISTRICT" => $row[8],"STATE" => $row[9],"PIN" => $row[10],"SUBSCRIPTION START DATE" => $row[11],"SUBSCRIPTION END DATE" => $row[12]));
     		$data .= "<tr><td data-th='S.No'>{$count}</td><td data-th='Name'>"."{$row[3]}"."."." "."{$row[0]}"." "."{$row[1]}"." "."{$row[2]}"."</td><td data-th='Email'>{$row[4]}</td><td data-th='Mobile'>{$row[5]}</td><td data-th='Address'>{$row[6]}</td><td data-th='City'>{$row[7]}</td><td data-th='District'>{$row[8]}</td><td data-th='State'>{$row[9]}</td><td data-th='Pin'>{$row[10]}</td><td data-th='SubPeriodFromDate'>{$row[11]}</td><td data-th='SubPeriodToDate'>{$row[12]}</td></tr>";
 		    $count++;
     	}
 		//echo"</tbody>";
 		$data .= "</table>";
 		$_SESSION["data"] = $data;
+		$_SESSION["export"] = $export;
 		echo $data;
 }
 ?>

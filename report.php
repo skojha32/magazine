@@ -132,19 +132,6 @@
     </div>
   </section>
   <!-- ##### Breadcrumb Area End ##### -->
-  <style>
-    #myDIV1 {
-      padding: 50px 50px;
-
-
-    }
-    #myDIV2 {
-      width: 100%;
-      padding: 50px 50px;
-      margin:auto;
-      display:block;
-    }
-  </style>
   <link rel="stylesheet" href="./radiostyle.css">
 
   <!-- ##### Portfolio Area Start ###### -->
@@ -207,7 +194,7 @@
   </div>
   <button type="submit" class="btn pixel-btn mt-15" id="show" name="show">Show</button>
   <button type="reset" class="btn pixel-btn mt-15">Clear</button>
-  <button class="btn pixel-btn mt-15" id="export" name="export">Export</button>
+  <a href="export.php" target="_blank"><span class="btn pixel-btn mt-15">Export</span></a>
 <a href="print.php" target="_blank"><span class="btn pixel-btn mt-15">Print</span></a>
   <span id="result"></span> 
 </form>
@@ -220,26 +207,6 @@
 
 
 
-
-
-<script>
-  function myFunction(btnsel) {
-    if(btnsel===1){
-      var x = document.getElementById("myDIV1");
-      var y = document.getElementById("myDIV2");
-      x.style.display = "block";
-      y.style.display = "none";
-    }
-    if(btnsel===2){
-      var x = document.getElementById("myDIV1");
-      var y = document.getElementById("myDIV2");
-      x.style.display = "none";
-      y.style.display = "block";
-
-    }  
-
-  }
-</script>
 
 <script>
   $(document).ready(function(){

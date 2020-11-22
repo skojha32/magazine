@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2020 at 11:24 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Nov 22, 2020 at 06:36 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,7 @@ CREATE TABLE `gateway` (
 
 INSERT INTO `gateway` (`username`, `password`, `sessionid`) VALUES
 ('shivam', '$2y$10$6Z4dYVbm', NULL),
+('shobhit_new', '$2y$10$.BebW62Dd10jU0ltd2ziKeCZ4VQdSyC5kem0I.KJfpQzYAgkpZDwy', '5fb9374408f69'),
 ('shubham', '$2y$10$Zii3631w', NULL),
 ('student', '$2y$10$rqv../U5XapZpEEM/E3C/u3nBMCSPyUFpnBnENlv5tlwMYfIrat.a', NULL);
 
@@ -110,7 +111,8 @@ INSERT INTO `userdetail` (`uid`, `fname`, `mname`, `lname`, `conginitial`, `desi
 (4, 'Mohit', 'Prakash', 'Yadav', NULL, 'Mr', NULL, 'Male', NULL, NULL, '8794561235', 'yadav@gmail.com', NULL, 'Indian', 'Karnataka', 'Bangalore Urban', NULL, 'Prestige Building,Horamavu', '560023', '2020-11-19'),
 (6, 'Shashi', 'Kant', 'Ojha', '', 'Mr', '', 'Male', '', '', '9513578524', 'shashi@gmail.com', '7639632415', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '202 T,Main Road', '560077', '2020-11-19'),
 (14, 'Mohan', '', 'Lal', '', 'Mr', '', 'Male', '', '', '7774441112', 'mohan@gmail.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', 'Truck House', '700051', '2020-11-21'),
-(15, 'Ved', '', 'Prakash', '', 'Prof', '', 'Trans', '', '', '8884445556', 'ved@ms.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', 'Central Plaza', '700051', '2020-11-21');
+(15, 'Ved', '', 'Prakash', '', 'Prof', '', 'Trans', '', '', '8884445556', 'ved@ms.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', 'Central Plaza', '700051', '2020-11-21'),
+(17, 'shobhit', 'kumar', 'gangwar', 'm', 'Mr', 'X-1 ', 'Male', 'new', 'sa', '9997255049', 'gangwarshobhit81@gmail.com', NULL, 'indian', 'karnataka', 'Bangalore Urban', 'bangalore', 'X-1 Shastri nagar , bareilly', '243122', '2020-11-11');
 
 --
 -- Indexes for dumped tables
@@ -150,7 +152,7 @@ ALTER TABLE `subscription`
 -- AUTO_INCREMENT for table `userdetail`
 --
 ALTER TABLE `userdetail`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

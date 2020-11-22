@@ -429,16 +429,19 @@ require "subs_count.php";
     }
   </script>
 
+</div>
+<br>
+<br>
 
-  <section class="pixel-cool-facts-area bg-gray section-padding-100-0">
+<section class="pixel-cool-facts-area bg-gray section-padding-70-0">
     <div class="container-fluid">
       <div class="row">
 
         <!-- Single Cool Facts -->
         <div class="col-12 col-sm-6 col-lg-3">
-          <div class="single-cool-fact mb-100">
+          <div class="single-cool-fact mb-10">
             <div class="scf-icon">
-              <img src="img/core-img/m1.png" alt="">
+              <img src="img/core-img/m1.png" style="width:60px;height:50px;margin-top:20px;" alt="">
             </div>
             <div class="scf-text">
               <h2><span class="counter"><?php echo $all; ?></span></h2>
@@ -449,9 +452,9 @@ require "subs_count.php";
 
         <!-- Single Cool Facts -->
         <div class="col-12 col-sm-6 col-lg-3">
-          <div class="single-cool-fact mb-100">
+          <div class="single-cool-fact mb-10">
             <div class="scf-icon">
-              <img src="img/core-img/m2.png" alt="">
+              <img src="img/core-img/m2.png" style="width:60px;height:50px;margin-top:20px;" alt="">
             </div>
             <div class="scf-text">
               <h2><span class="counter"><?php echo $active; ?></span></h2>
@@ -462,9 +465,9 @@ require "subs_count.php";
 
         <!-- Single Cool Facts -->
         <div class="col-12 col-sm-6 col-lg-3">
-          <div class="single-cool-fact mb-100">
+          <div class="single-cool-fact mb-10">
             <div class="scf-icon">
-              <img src="img/core-img/m3.png" alt="">
+              <img src="img/core-img/m3.png" style="width:60px;height:50px;margin-top:20px;" alt="">
             </div>
             <div class="scf-text">
               <h2><span class="counter"><?php echo $inactive; ?></span></h2>
@@ -475,9 +478,9 @@ require "subs_count.php";
 
         <!-- Single Cool Facts -->
         <div class="col-12 col-sm-6 col-lg-3">
-          <div class="single-cool-fact mb-100">
+          <div class="single-cool-fact mb-10">
             <div class="scf-icon">
-              <img src="img/core-img/m4.png" alt="">
+              <img src="img/core-img/m4.png" style="width:60px;height:50px;margin-top:20px;" alt="">
             </div>
             <div class="scf-text">
               <h2><span class="counter"><?php echo $today; ?></span></h2>
@@ -489,16 +492,6 @@ require "subs_count.php";
       </div>
     </div>
   </section>
-
-
-
-
-
-
-
-</div>
-<br>
-<br>
 <!-- ##### Portfolio Area End ###### -->
 
 <!-- ##### Footer Area Start ##### -->
@@ -509,10 +502,10 @@ require "subs_count.php";
   <div class="copywrite-area">
     <div class="container-fluid">
       <div class="row align-items-center">
-        <div class="col-12 col-md-6">
-          <div class="copywrite-content">
+        <div class="col-12 col-md-12">
+          <div class="copywrite-content" >
             <!-- Copywrite Text -->
-            <p class="copywrite-text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p class="copywrite-text" style="margin-left:30%;"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>

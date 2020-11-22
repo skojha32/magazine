@@ -441,7 +441,7 @@ require "subs_count.php";
               <img src="img/core-img/m1.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span><?php echo $all; ?></span></h2>
+              <h2><span class="counter"><?php echo $all; ?></span></h2>
               <h6>Total Subscriber</h6>
             </div>
           </div>
@@ -454,7 +454,7 @@ require "subs_count.php";
               <img src="img/core-img/m2.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span><?php echo $active; ?></span></h2>
+              <h2><span class="counter"><?php echo $active; ?></span></h2>
               <h6>Active Subscriber</h6>
             </div>
           </div>
@@ -467,7 +467,7 @@ require "subs_count.php";
               <img src="img/core-img/m3.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span><?php echo $inactive; ?></span></h2>
+              <h2><span class="counter"><?php echo $inactive; ?></span></h2>
               <h6>Inactive Subscriber</h6>
             </div>
           </div>
@@ -480,7 +480,7 @@ require "subs_count.php";
               <img src="img/core-img/m4.png" alt="">
             </div>
             <div class="scf-text">
-              <h2><span><?php echo $today; ?></span></h2>
+              <h2><span class="counter"><?php echo $today; ?></span></h2>
               <h6>New Subscriber Added</h6>
             </div>
           </div>

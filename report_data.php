@@ -6,7 +6,7 @@ session_start();
 
 echo "<br><br>";
 
-$data =  "<table id='subsreport' class='rwd-table' style='margin:auto;'>";
+$data =  "<table id='subsreport' class='rwd-table' style='color:white;'>";
 
 $data .= "<tr>
     <th>S.No</th>

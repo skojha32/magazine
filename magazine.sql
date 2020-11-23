@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2020 at 03:41 PM
+-- Generation Time: Nov 23, 2020 at 11:04 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -38,7 +38,7 @@ CREATE TABLE `gateway` (
 --
 
 INSERT INTO `gateway` (`username`, `password`, `sessionid`) VALUES
-('student', '$2y$10$rqv../U5XapZpEEM/E3C/u3nBMCSPyUFpnBnENlv5tlwMYfIrat.a', NULL);
+('student', '$2y$10$rqv../U5XapZpEEM/E3C/u3nBMCSPyUFpnBnENlv5tlwMYfIrat.a', '5fbbccb757e9d');
 
 -- --------------------------------------------------------
 
@@ -49,10 +49,10 @@ INSERT INTO `gateway` (`username`, `password`, `sessionid`) VALUES
 CREATE TABLE `subscription` (
   `subid` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `paymethod` varchar(15) NOT NULL,
-  `startdate` date NOT NULL,
-  `enddate` date NOT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `paymethod` varchar(15) DEFAULT NULL,
+  `startdate` date DEFAULT NULL,
+  `enddate` date DEFAULT NULL,
   `comment` varchar(100) DEFAULT NULL,
   `comment1` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -62,7 +62,7 @@ CREATE TABLE `subscription` (
 --
 
 INSERT INTO `subscription` (`subid`, `uid`, `type`, `paymethod`, `startdate`, `enddate`, `comment`, `comment1`) VALUES
-(2, 1, 'Paid', 'Cash', '2020-11-19', '2021-11-19', NULL, NULL),
+(2, 1, 'Paid', 'Cash', '2020-11-19', '2021-11-19', '', ''),
 (3, 2, 'Complementary', 'Bank', '2020-11-19', '2021-05-19', '', ''),
 (6, 6, 'Paid', 'Cash', '2020-11-19', '2021-04-19', 'null', 'null'),
 (9, 14, 'Paid', 'Cheque', '2020-11-21', '2020-12-21', '', ''),
@@ -86,7 +86,7 @@ INSERT INTO `subscription` (`subid`, `uid`, `type`, `paymethod`, `startdate`, `e
 (28, 33, 'Paid', 'Cash', '2020-11-22', '2020-11-23', '', ''),
 (29, 34, 'Paid', 'Cash', '2020-11-22', '2020-11-23', '', ''),
 (30, 35, 'Paid', 'Cash', '2020-11-19', '2020-11-20', '', ''),
-(31, 36, 'Paid', 'Cash', '2020-11-20', '2020-11-21', '', ''),
+(31, 36, 'Paid', 'Cash', '2020-11-20', '2020-11-24', '', ''),
 (32, 37, 'Paid', 'Cash', '2020-11-20', '2020-11-21', '', ''),
 (35, 40, 'Complementary', 'Others', '2020-11-22', '2020-11-24', '', ''),
 (36, 41, 'Complementary', 'Others', '2020-11-22', '2020-11-24', '', ''),
@@ -94,7 +94,15 @@ INSERT INTO `subscription` (`subid`, `uid`, `type`, `paymethod`, `startdate`, `e
 (38, 43, 'Complementary', 'Others', '2020-11-22', '2020-11-24', '', ''),
 (39, 44, 'Complementary', 'Others', '2020-11-22', '2020-11-24', '', ''),
 (40, 45, 'Complementary', 'Others', '2020-11-22', '2020-11-24', '', ''),
-(41, 46, 'Complementary', 'Others', '2020-11-22', '2020-11-24', '', '');
+(41, 46, 'Complementary', 'Others', '2020-11-22', '2020-11-24', '', ''),
+(42, 47, 'Paid', 'Cash', '2020-11-23', '2020-11-24', '', ''),
+(43, 48, 'Paid', 'Cash', '2020-11-23', '2020-11-24', '', ''),
+(44, 51, 'Paid', 'Bank', '2020-11-23', '2020-11-24', '', ''),
+(45, 53, 'Paid', 'Bank', '2020-11-24', '2020-11-29', '', ''),
+(46, 99, 'Complementary', 'Cheque', '2020-11-23', '2020-11-25', '', ''),
+(48, 105, NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 106, NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 107, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -130,8 +138,8 @@ CREATE TABLE `userdetail` (
 --
 
 INSERT INTO `userdetail` (`uid`, `fname`, `mname`, `lname`, `conginitial`, `designation`, `hname`, `gender`, `oname`, `congname`, `cmobile`, `email`, `aphone`, `nationality`, `cstate`, `cdistrict`, `ccity`, `caddress`, `cpin`, `entrydate`) VALUES
-(1, 'Shivaji', 'Maha', 'Raja', NULL, 'Fr', NULL, 'Male', NULL, NULL, '7412589634', 'you@example.com', NULL, 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', 'Kristu Jayanti College', '560077', '2020-11-19'),
-(2, 'George', '', 'John', '', 'Mr', '', 'Male', '', '', '8523697412', 'john@example.com', '', 'Indian', 'Karnataka', 'Bangalore Rural', '', 'Pattrick Mansion', '560089', '2020-11-19'),
+(1, 'Shivaji', 'Maha', 'Raja', '', 'Fr', '', 'Male', '', '', '7412589634', 'shivaji@example.com', '', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', 'Kristu Jayanti College', '560077', '2020-11-19'),
+(2, 'George', '', 'John', '', 'Mr', '', 'Male', '', '', '8523697412', '18CS1A3132@kristujayanti.com', '', 'Indian', 'Karnataka', 'Bangalore Rural', '', 'Pattrick Mansion', '560089', '2020-11-19'),
 (6, 'Shashi', 'Kant', 'Ojha', '', 'Mr', '', 'Male', '', '', '9513578524', 'shashi@gmail.com', '7639632415', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '202 T,Prestige Building,Block A,Flat 411,G.N Clony Road,Opposite to Maya Temple,MG Street,Indiranagar', '560077', '2020-11-19'),
 (14, 'Mohan', '', 'Lal', '', 'Mr', '', 'Male', '', '', '7774441112', 'mohan@gmail.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', 'Truck House', '700051', '2020-11-21'),
 (15, 'Ved', '', 'Prakash', '', 'Prof', '', 'Trans', '', '', '8884445556', 'ved@ms.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', 'Central Plaza', '700051', '2020-11-21'),
@@ -162,7 +170,15 @@ INSERT INTO `userdetail` (`uid`, `fname`, `mname`, `lname`, `conginitial`, `desi
 (43, 'Ajay', '', 'Prakash', '', 'Mr', '', 'Male', '', '', '8884445556', 'ajay27@gmail.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', '212A,Block A,Flat 703,River Valley,DumDum,Opp To RadheMai Temple,G.N Clony,Bangalore', '560077', '2020-11-22'),
 (44, 'Ajay', '', 'Prakash', '', 'Mr', '', 'Male', '', '', '8884445556', 'ajay28@gmail.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', '212A,Block A,Flat 703,River Valley,DumDum,Opp To RadheMai Temple,G.N Clony,Bangalore', '560077', '2020-11-22'),
 (45, 'Ajay', '', 'Prakash', '', 'Mr', '', 'Male', '', '', '8884445556', 'ajay29@gmail.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', '212A,Block A,Flat 703,River Valley,DumDum,Opp To RadheMai Temple,G.N Clony,Bangalore', '560077', '2020-11-22'),
-(46, 'Ajay', '', 'Prakash', '', 'Mr', '', 'Male', '', '', '8884445556', 'ajay30@gmail.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', '212A,Block A,Flat 703,River Valley,DumDum,Opp To RadheMai Temple,G.N Clony,Bangalore', '560077', '2020-11-22');
+(46, 'Ajay', '', 'Prakash', '', 'Mr', '', 'Male', '', '', '8884445556', 'ajayeya@gmail.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', '212A,Block A,Flat 703,River Valley,DumDum,Opp To RadheMai Temple,G.N Clony,Bangalore', '560077', '2020-11-22'),
+(47, 'Pratap', 'Rana', 'Mukhiya', 'St', 'Fr', 'Pan House', 'Male', 'Pratap Rana', 'Pent House', '9874563216', 'pratap@gmail.com', '8974561234', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '212A,Govind Mitra Road', '560029', '2020-11-23'),
+(48, 'Binda', '', 'Rai', '', 'Dr', '', 'Female', '', '', '5556664442', 'binda@hindi.com', '', 'Indian', 'WestBengal', 'North 24 Parganas', 'Kolkata', '212A,Block A,Flat 703,River Valley,DumDum,Opp To RadheMai Temple,G.N Clony,Bangalore', '560029', '2020-11-23'),
+(51, 'Pratapa', 'Rana', 'Mukhiya', 'St', 'Fr', 'Pan House', 'Male', 'Pratap Rana', 'Pent House', '9874563216', 'pratap1@gmail.com', '7774445558', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '212A,Govind Mitra Road', '560025', '2020-11-23'),
+(53, 'Pratapo', 'Rana', 'Mukhiya', 'St', 'Fr', 'Pan House', 'Male', 'Pratap Rana', 'Pent House', '9874563216', 'pratap2@gmail.com', '7774445558', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '212A,Govind Mitra Road', '560025', '2020-11-23'),
+(99, 'Mina', 'Rana', 'Mukhiya', 'St', 'Fr', 'Pan House', 'Male', 'Pratap Rana', 'Pent House', '9874563216', 'pratap5@gmail.com', '7774445558', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '212A,Govind Mitra Road', '560025', '2020-11-23'),
+(105, 'Moti', 'Rana', 'Mukhiya', '', 'Fr', '', 'Male', '', '', '9874563216', 'moti@gmail.com', '', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '212A,Govind Mitra Road', '560025', '2020-11-23'),
+(106, 'Mahiya', 'Vijay', 'Raj', '', 'Fr', '', 'Female', '', '', '9874563216', 'mahiya@vijay.com', '', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '212A,Govind Mitra Road', '560025', '2020-11-23'),
+(107, 'Tina', '', 'Rina', '', 'Miss', '', 'Female', '', '', '9874563216', 'tina@merijaan.com', '', 'Indian', 'Karnataka', 'Bangalore Urban', 'Bangalore', '212A,Govind Mitra Road', '560025', '2020-11-23');
 
 --
 -- Indexes for dumped tables
@@ -196,13 +212,13 @@ ALTER TABLE `userdetail`
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `subid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `subid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `userdetail`
 --
 ALTER TABLE `userdetail`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- Constraints for dumped tables

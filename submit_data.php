@@ -38,62 +38,71 @@ require "session.php";
   $paymethod = test_input($_POST['paymethod']);
   $comment1 = test_input($_POST['comment1']);
   $cdistrict = test_input($_POST['cdistrict']);
-  // echo $uid."<br>".$fname."<br>".$mname."<br>".$lname."<br>".$entrydate."<br>".$conginitial."<br>".$designation."<br>".$hname."<br>".$gender."<br>".$oname."<br>".$congname."<br>".$cmobile."<br>".$email."<br>".$phone."<br>".$nationality."<br>".$cstate."<br>".$ccity."<br>".$caddress."<br>".$cpin."<br>".$type."<br>".$comment."<br>".$startdate."<br>".$enddate."<br>".$paymethod."<br>".$comment1."<br>".$cdistrict."<br>";
+  //echo $uid."<br>".$fname."<br>".$mname."<br>".$lname."<br>".$entrydate."<br>".$conginitial."<br>".$designation."<br>".$hname."<br>".$gender."<br>".$oname."<br>".$congname."<br>".$cmobile."<br>".$email."<br>".$phone."<br>".$nationality."<br>".$cstate."<br>".$ccity."<br>".$caddress."<br>".$cpin."<br>".$type."<br>".$comment."<br>".$startdate."<br>".$enddate."<br>".$paymethod."<br>".$comment1."<br>".$cdistrict."<br>";
+  
+  
   if($fname =="" ||  $entrydate=="" ||  $gender =="" || $cmobile=="" || $email=="" || $nationality == "" || $cstate == "" || $cdistrict == "" || $caddress == "" || $cpin == "" || $type == "" || $paymethod == "" || $startdate == "" || $enddate == ""   )
   {
-   echo "<script type='text/javascript'>alert('Enter All the details Carefully')</script>";
-                 #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+     echo "<script type='text/javascript'>alert('Enter All the details Carefully')</script>";
+     exit;
  }
 	        //Validate e-mail
- elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
  {
    echo "<script type='text/javascript'>alert('Invalid Email')</script>";
-             #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+   exit;
  }
          // Validate Name and Address
- elseif(is_numeric($fname) || is_numeric($mname) || is_numeric($lname) || is_numeric($conginitial) || is_numeric($hname) || is_numeric($oname) || is_numeric($congname) || is_numeric($nationality) || is_numeric($cstate) || is_numeric($ccity) || is_numeric($caddress) || is_numeric($cdistrict))
+ if(is_numeric($fname) || is_numeric($mname) || is_numeric($lname) || is_numeric($conginitial) || is_numeric($hname) || is_numeric($oname) || is_numeric($congname) || is_numeric($nationality) || is_numeric($cstate) || is_numeric($ccity) || is_numeric($caddress) || is_numeric($cdistrict))
  {
+
   echo "<script type='text/javascript'>alert('Invalid Name or Address')</script>";
-             #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+  exit;
 
 }
-		     //Validate Pin
-elseif(!is_numeric($cpin) || strlen($cpin) <> 6) 
+//Validate Pin
+if(!is_numeric($cpin) || strlen($cpin) <> 6) 
 {
+
  echo "<script type='text/javascript'>alert('Invalid PinCode')</script>";
-             #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
-
+ exit;
 }
-elseif($enddate < $startdate)
+if($enddate < $startdate)
 {
+
  echo "<script type='text/javascript'>alert('Invalid Subscription period')</script>";
-               # echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+ exit;
+
 }	
 
 		    //Validate Phone
-elseif(!is_numeric($cmobile) || strlen($cmobile) <> 10)
+if(!is_numeric($cmobile) || strlen($cmobile) <> 10)
 {
+
  echo "<script type='text/javascript'>alert('Invalid Mobile Number')</script>";
-             #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+ exit;
 
 }
-elseif($phone != "" && is_numeric($phone))
+if($phone != "" && is_numeric($phone))
 {
  if(strlen($phone) >10)
  {
   echo "<script type='text/javascript'>alert('Phone Number must be only 10 digits')</script>";
-             #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+  exit;
 }
 }
-elseif($phone != "" && !is_numeric($phone))
+if($phone != "" && !is_numeric($phone))
 {
+
  echo "<script type='text/javascript'>alert('Phone Number must be numeric')</script>";
-                #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+ exit;
+                
 
 }
 
 else
 {
+  
   if($uid == 0)
   { 
 
@@ -110,7 +119,7 @@ else
       if($query)
       {
        echo "<script type='text/javascript'>alert('User added Successfully')</script>";
-				           #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+				           
      }
      else
      {
@@ -118,12 +127,12 @@ else
        echo "<script type='text/javascript'>alert('New Record Failed')</script>";
      }
 
-                #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+                
    }
    else
    {
     echo "<script type='text/javascript'>alert('New Record Failed')</script>";
-                #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+               
   }
 }
 else
@@ -136,7 +145,7 @@ else
     if($uquery)
     {
       echo "<script type='text/javascript'>alert('User Detail Updated Successfully')</script>";
-            #echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+            
     }
     else
     {
@@ -162,7 +171,7 @@ else
   if($query)
   {
     $query = mysqli_query($con, "DELETE FROM `userdetail` WHERE `uid` = '$uid'");
-    if(query)
+    if($query)
     {
       echo "<script type='text/javascript'>alert('User Detail Deleted Successfully')</script>";
     }
@@ -179,5 +188,6 @@ else
   }
 }
 //Enable it once everything set
- echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+echo "<script type='text/javascript'>window.location.assign('home.php')</script>";
+//echo "Finish";
 ?>

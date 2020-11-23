@@ -40,8 +40,17 @@
                 $mail->ClearAllRecipients();
                 $mail->addAddress($email[0]);
 
-                $mail->Body = "Hello ".$email[1].",<br /><br />Your subscription for Vachanam Balivediyil&nbsp;magazine is expired.Please Renew it.<br /><br />Regards,<br />Vachanam&nbsp;Balivediyil";
-                $mail->AltBody = "Your subscription for Vachanam Balivediyil magazine is expired.Please Renew it.";
+                if(isset($_SESSION['reminder']))
+				{
+					$mail->Subject = "Subscription Reminder";
+					$mail->Body = "Hello ".$email[1].",<br /><br />Your subscription for Vachanam Balivediyil magazine is going to expire soon.Please Renew it timely.<br /><br />Regards,<br />Vachanam&nbsp;Balivediyil";
+				    $mail->AltBody = "Your subscription for Vachanam Balivediyil magazine is going to expire soon.Please Renew it.";
+				}
+				else
+				{
+                    $mail->Body = "Hello ".$email[1].",<br /><br />Your subscription for Vachanam Balivediyil magazine is expired.Please Renew it.<br /><br />Regards,<br />Vachanam&nbsp;Balivediyil";
+				    $mail->AltBody = "Your subscription for Vachanam Balivediyil magazine is expired.Please Renew it.";
+				}
  
                 if($mail->Send()) {
                     echo "Message sent!\n";

@@ -31,10 +31,12 @@ else {
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Login - </title>
+  <link rel="icon" href="./img/bg-img/logo.png">
+  <title>Login - Vachanam Balivediyil</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'><link rel="stylesheet" href="./login_style.css">
 
 </head>
+
 <body>
   <style>
     body{
@@ -56,11 +58,19 @@ else {
       margin-bottom: 5%;
     }
   </style>
+
+  
 <!-- partial:index.partial.html -->
+<center><img src="./img/bg-img/logo.png" class="logo1" style="width: 100px;height: 100px;border-radius:50%;margin-top:5px;" alt=""/>
+<br><h1 style="color:white;font-size:50px;">VACHANAM BALIVEDIYIL</h1></center>
 <form class="modal-content" method="post" action="index.php">
-<div class="login">
+  <br>
+  
+
+<div class="login" style="margin-top:10%;">
   <div class="form">
     <h2>Login</h2>
+    
     <div class="form-field">
       <label for="login-mail"><i class="fa fa-user"></i></label>
       <input id="login-mail" type="text" name="uname" placeholder="Username" required>

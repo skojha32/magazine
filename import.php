@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="./img/bg-img/logo.png">
     <title>Import User Detail</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="./login_style.css">
@@ -33,7 +34,7 @@
             margin-bottom: 5%;
         }
     </style>
-    
+      
     <!-- partial:index.partial.html -->
     <form class="modal-content" method="post" action="import.php" enctype="multipart/form-data">
     

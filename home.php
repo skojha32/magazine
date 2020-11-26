@@ -21,7 +21,7 @@ require "subs_count.php";
   <title>Vachanam Balivediyil</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="img/core-img/favicon.ico">
+  <link rel="icon" href="./img/bg-img/logo.png">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -66,7 +66,7 @@ require "subs_count.php";
           <nav class="classy-navbar justify-content-between" id="pixelNav">
 
             <!-- Nav brand -->
-            <a href="home.php" class="nav-brand" style="color:white;">Vachanam Balivediyil</a>
+            <a href="home.php" class="nav-brand" style="color:white;"><img src="./img/bg-img/logo.png" style="width: 65px;height: 60px;border-radius:50%;margin-right:10px;" alt="">Vachanam Balivediyil</a>
 
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
@@ -95,7 +95,6 @@ require "subs_count.php";
                       <li><a href="report.php">Subscription Report</a></li>
                     </ul>
                   </li>
-                  <li><a href="import.php" target="_blank">Import</a></li>
                   <li><a href="#">Settings</a>
                     <ul class="dropdown">
                       <li><a href="changepasswd.php">Change Password</a></li>
@@ -485,7 +484,7 @@ require "subs_count.php";
             </div>
             <div class="scf-text">
               <h2><span class="counter"><?php echo $today; ?></span></h2>
-              <h6>Subscriber To be Added</h6>
+              <h6>New Subscriber Added</h6>
             </div>
           </div>
         </div>

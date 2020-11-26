@@ -109,26 +109,26 @@
                     
                 } else {
                     
-                    $entrydate = test_input($elt[0]);
-                    $designation = test_input($elt[1]);
-                    $fname = test_input($elt[2]);
-                    $mname = test_input($elt[3]);
-                    $lname = test_input($elt[4]);
-                    $oname = test_input($elt[5]);
-                    $gender = test_input($elt[6]);
-                    $cmobile =  test_input($elt[7]);
-                    $email = test_input($elt[8]);
+                    $entrydate = test_input($elt[1]);
+                    $designation = test_input($elt[2]);
+                    $fname = test_input($elt[3]);
+                    $mname = test_input($elt[4]);
+                    $lname = test_input($elt[5]);
+                    $oname = test_input($elt[6]);
+                    $gender = test_input($elt[7]);
+                    $cmobile =  test_input($elt[8]);
+                    $email = test_input($elt[9]);
                     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-                    $phone = test_input($elt[9]);
-                    $hname = test_input($elt[10]);
-                    $conginitial = test_input($elt[11]);
-                    $congname = test_input($elt[12]);
-                    $nationality = test_input($elt[13]);
-                    $cstate  = test_input($elt[14]);
-                    $cdistrict = test_input($elt[15]);
-                    $ccity = test_input($elt[16]);
-                    $caddress = test_input($elt[17]);
-                    $cpin = test_input($elt[18]);
+                    $phone = test_input($elt[10]);
+                    $hname = test_input($elt[11]);
+                    $conginitial = test_input($elt[12]);
+                    $congname = test_input($elt[13]);
+                    $nationality = test_input($elt[14]);
+                    $cstate  = test_input($elt[15]);
+                    $cdistrict = test_input($elt[16]);
+                    $ccity = test_input($elt[17]);
+                    $caddress = test_input($elt[18]);
+                    $cpin = test_input($elt[19]);
                    // echo "<br>".var_dump($fname)."<br>".$mname."<br>".$lname."<br>".var_dump($entrydate)."<br>".$conginitial."<br>".$designation."<br>".$hname."<br>".$gender."<br>".$oname."<br>".$congname."<br>".var_dump($cmobile)."<br>".$email."<br>".$phone."<br>".$nationality."<br>".$cstate."<br>".$ccity."<br>".$caddress."<br>".$cpin."<br>".var_dump($cdistrict)."<br>";
                     if ($fname == "" ||  $entrydate == "" ||  $gender == "" || $cmobile == "" || $email == "" || $nationality == "" || $cstate == "" || $cdistrict == "" || $caddress == "" || $cpin == "") {
                         echo "Error1";

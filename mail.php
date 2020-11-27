@@ -7,13 +7,13 @@
 
         session_start();
 
-        if(!isset($_SESSION["email"]))
+        if(!isset($_SESSION["Vachanamemail"]))
         {
             echo "<script type='text/javascript'>alert('Nothing To Send')</script>";
             echo "<script type='text/javascript'>window.close()</script>";
         }
 
-        $recipients = $_SESSION["email"];
+        $recipients = $_SESSION["Vachanamemail"];
         $error = 0;
         $errorList = '';
 
@@ -40,7 +40,7 @@
                 $mail->ClearAllRecipients();
                 $mail->addAddress($email[0]);
 
-                if(isset($_SESSION['reminder']))
+                if(isset($_SESSION['Vachanamreminder']))
 				{
 					$mail->Subject = "Subscription Reminder";
 					$mail->Body = "Hello ".$email[1].",<br /><br /><p>The renewal date of 'Vachanam Balivediyil' is near. Kindly remit the annual subscription fee as early as possible.</p>

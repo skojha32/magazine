@@ -33,7 +33,7 @@
    session_start();
 
 
-   if(!isset($_SESSION["data"]))
+   if(!isset($_SESSION["Vachanamdata"]))
    {
    	echo "<script type='text/javascript'>alert('Nothing To Print')</script>";
    	echo "<script type='text/javascript'>window.close()</script>";
@@ -41,7 +41,7 @@
 
    $dom = new domDocument; 
     
-   $dom->loadHTML($_SESSION["data"]); 
+   $dom->loadHTML($_SESSION["Vachanamdata"]); 
    
    $dom->preserveWhiteSpace = false; 
    

@@ -152,7 +152,7 @@
 
            if(mysqli_num_rows($query) == 0)
            {
-            exit();
+            echo "<option disabled selected value> -- Select an option -- </option>";
           }
           else
           {

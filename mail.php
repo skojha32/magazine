@@ -43,12 +43,16 @@
                 if(isset($_SESSION['reminder']))
 				{
 					$mail->Subject = "Subscription Reminder";
-					$mail->Body = "Hello ".$email[1].",<br /><br />Your subscription for Vachanam Balivediyil magazine is going to expire soon.Please Renew it timely.<br /><br />Regards,<br />Vachanam&nbsp;Balivediyil";
+					$mail->Body = "Hello ".$email[1].",<br /><br /><p>The renewal date of 'Vachanam Balivediyil' is near. Kindly remit the annual subscription fee as early as possible.</p>
+                    <p>Account details:<br />Bank: South Indian Bank<br />Name: vachanam<br />A/c no. 0037053000010527<br />IFSC no. SIBL0000037<br />BRANCH : KOTTAYAM</p>
+                    <p>Thank You</p>";
 				    $mail->AltBody = "Your subscription for Vachanam Balivediyil magazine is going to expire soon.Please Renew it.";
 				}
 				else
 				{
-                    $mail->Body = "Hello ".$email[1].",<br /><br />Your subscription for Vachanam Balivediyil magazine is expired.Please Renew it.<br /><br />Regards,<br />Vachanam&nbsp;Balivediyil";
+                    $mail->Body = "Hello ".$email[1].",<br /><br /><p>Your subscription for Vachanam Balivediyil is expired.Please renew it by paying annual subscription fee as early as possible.</p>
+                    <p>Account details:<br />Bank: South Indian Bank<br />Name: vachanam<br />A/c no. 0037053000010527<br />IFSC no. SIBL0000037<br />BRANCH : KOTTAYAM</p>
+                    <p>Thank You</p>";
 				    $mail->AltBody = "Your subscription for Vachanam Balivediyil magazine is expired.Please Renew it.";
 				}
  
